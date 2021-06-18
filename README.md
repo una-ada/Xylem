@@ -1,13 +1,32 @@
 # Xylem
 
-A simple microblogging site, developed to meet the requirements for [GA SEI-R][4] Project 2 ([MEN][13] Stack [CRUD][12] App).
+A simple microblogging site, developed to meet the requirements for
+[GA SEI-R][4] project 2 ([MEN][13] stack [CRUD][12] application).
 
-## Documentation
+## Getting Started
 
-### Planning and Development
+_Work in progress!_
 
-**User Stories** <br />
-[_Trello Board_][3] <br />
+<!-- TODO: Write out tutorial for deployed app. -->
+
+<!-- TODO: Add screenshots with annotations to explain the UI. -->
+
+<!-- TODO: Write out tutorial for local installation. -->
+
+## Solutions
+
+_Work in progress!_
+
+<!-- TODO: Describe "technologies used" (Mongo, Node, HTML, CSS, &c.). -->
+
+<!-- TODO: Write out "CONTRIBUTING" guide, covering styles and methods. -->
+
+<!-- TODO: Write out explanation of repository structure. -->
+
+## Planning and Development
+
+### User Stories || [Trello Board][3]
+
 This board describes features from a user's perspective, what the user might 
 want to do (and sometimes why). Each card follows a general format of "AAU (As 
 A User), I want to &lt;action&gt;, because &lt;reason&gt;" and falls into one 
@@ -18,10 +37,8 @@ of three categories:
     be implemented before presenting the project.
  -  **Completed**, for user stories that have been successfully implemented.
 
-<br />
+### Entity Relationship Diagram (ERD) || [Lucid Document][1]
 
-**Entity Relationship Diagram (ERD)** <br/>
-[_Lucid Document_][1] <br />
 This entity relationship diagram (or [entity-relationship model][9]) was 
 created with the [ERD template][5] on [Lucidchart][6], which uses [crow's foot 
 notation][7] for cardinality. This is the initial pass on modeling the database 
@@ -30,13 +47,19 @@ project: User, Post, Comment (_embedded_), Like (_embedded_), and Follow;
 additionally, there are two ice box models that will be necessary for future 
 updates: Image and Notification.
 
-<br />
+### Wireframe || [Adobe XD Design Review][2]
 
-**Wireframe** <br />
-[_Adobe XD Design Review_][2] <br/>
 This wireframe was done in [Adobe XD][11], initially using the [Wires][10] 
 wireframe kit. It outlines the user interface (UI) for the landing page, users, 
 and posts, as well as basic user experience (UX) via a flow prototype.
+
+## Next Steps
+
+_Work in progress!_
+
+<!-- TODO: Write out planned updates. -->
+
+<!-- TODO: Link to open issues for planned features. -->
 
 [1]:  https://lucid.app/lucidchart/62a36a47-96ac-4762-8948-601caa338a2e/view
 [2]:  https://xd.adobe.com/view/ab09d4da-ca19-40d8-8613-9f7ef9647524-fe5a
