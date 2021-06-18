@@ -25,7 +25,7 @@ _Work in progress!_
 
 ## Planning and Development
 
-### User Stories || [Trello Board][3]
+### User Stories &rarr; [Trello Board][3]
 
 This board describes features from a user's perspective, what the user might 
 want to do (and sometimes why). Each card follows a general format of "AAU (As 
@@ -37,7 +37,16 @@ of three categories:
     be implemented before presenting the project.
  -  **Completed**, for user stories that have been successfully implemented.
 
-### Entity Relationship Diagram (ERD) || [Lucid Document][1]
+### Features &rarr; [GitHub Project][14]
+
+This [Kanban][15]-style project board covers what is missed by the Trello 
+board: the server-side implementation steps, i.e. "features" as opposed to 
+"user stories." User stories only define broad UX flows, which may include a 
+number of discrete steps for implementation and multiple stories may overlap at 
+certain steps. To remedy this, issues per feature (tagged "enhancement") are 
+opened on the repo, added to the project, and automated through pull requests.
+
+### Entity Relationship Diagram (ERD) &rarr; [Lucid Document][1]
 
 This entity relationship diagram (or [entity-relationship model][9]) was 
 created with the [ERD template][5] on [Lucidchart][6], which uses [crow's foot 
@@ -47,7 +56,7 @@ project: User, Post, Comment (_embedded_), Like (_embedded_), and Follow;
 additionally, there are two ice box models that will be necessary for future 
 updates: Image and Notification.
 
-### Wireframe || [Adobe XD Design Review][2]
+### Wireframe &rarr; [Adobe XD Design Review][2]
 
 This wireframe was done in [Adobe XD][11], initially using the [Wires][10] 
 wireframe kit. It outlines the user interface (UI) for the landing page, users, 
@@ -74,3 +83,5 @@ _Work in progress!_
 [11]: https://www.adobe.com/products/xd.html
 [12]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 [13]: https://en.wikipedia.org/wiki/MEAN_(solution_stack)
+[14]: https://github.com/users/una-ada/projects/3
+[15]: https://en.wikipedia.org/wiki/Kanban_(development)
