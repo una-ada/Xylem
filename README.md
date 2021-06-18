@@ -1,6 +1,6 @@
 # Xylem
 
-A simple microblogging site, developed to meet the requirements for
+A simple micro-blogging site, developed to meet the requirements for
 [GA SEI-R][4] project 2 ([MEN][13] stack [CRUD][12] application).
 
 ## Getting Started
