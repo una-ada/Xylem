@@ -1,12 +1,16 @@
 /**
  * Server configuration
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.3
+ * @version 0.1.6
  * @since 0.1.3
  */
+
+/*----- Imports --------------------------------------------------------------*/
 import dotenv from 'dotenv';
-dotenv.config()
 import mongoose from 'mongoose';
+
+/*----- Initialize -----------------------------------------------------------*/
+dotenv.config()
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
