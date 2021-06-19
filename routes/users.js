@@ -14,6 +14,8 @@ import usersCtrl from '../controllers/users.js';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
+router.route('/')
+  .put((req, res) => res.send('TEST'));
 router.get('/edit', usersCtrl.edit);
 
 /*----- Exports --------------------------------------------------------------*/
