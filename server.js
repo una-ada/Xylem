@@ -12,6 +12,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import override from 'method-override';
 import session from 'express-session';
+import passport from 'passport';
 
 /*----- Initialize -----------------------------------------------------------*/
 // Infill for `__dirname`
@@ -29,6 +30,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
