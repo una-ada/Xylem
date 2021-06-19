@@ -11,6 +11,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import override from 'method-override';
+import session from 'express-session';
 
 /*----- Initialize -----------------------------------------------------------*/
 // Infill for `__dirname`
@@ -23,13 +24,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(override('_method'));
 app.use(logger('dev'));
+app.use(session({
+  secret: 'temporary20210618',
+  resave: false,
+  saveUninitialized: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*----- Routers --------------------------------------------------------------*/
-
+app.get('/', (req, res) => res.send('TEST'));
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {
