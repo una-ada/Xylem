@@ -1,7 +1,7 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.5
+ * @version 0.1.6
  * @since 0.1.0
  */
 
@@ -14,6 +14,7 @@ import logger from 'morgan';
 import override from 'method-override';
 import session from 'express-session';
 import passport from 'passport';
+import indexRouter from './routes/index.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 // Infill for `__dirname`
@@ -41,7 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*----- Routers --------------------------------------------------------------*/
-app.get('/', (req, res) => res.send('TEST'));
+app.use('/', indexRouter);
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {
