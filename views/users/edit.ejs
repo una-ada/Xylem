@@ -1,0 +1,32 @@
+<%# 
+  # User settings page (/users/edit)
+  # by Una Ada <una@anarchy.website>
+  # Version 0.2.1
+  # Since v0.2.1
+  #%> 
+<% if(user) { %>
+  <form action="/users?_method=PUT" method="POST">
+    <label>
+      Username:
+      <input
+        name="handle"
+        type="text"
+        value="<%= user.handle %>"
+      />
+    </label>
+    <br />
+    <label>
+      Display Name:
+      <input
+        name="displayName"
+        type="text"
+        value="<%= user.displayName %>"
+      />
+    </label>
+    <br />
+    <input
+      type="submit"
+      value="Save Settings"
+    />
+  </form>
+<% } %>
