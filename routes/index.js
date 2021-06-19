@@ -12,7 +12,7 @@ import passport from 'passport';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
-router.get('/', (req, res) => res.send('TEST'));
+router.get('/', (req, res) => res.render('index'));
 router.get(
   '/oauth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
