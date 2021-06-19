@@ -1,7 +1,7 @@
 /**
  * Main server script.
- * @author Una
- * @version 2021.06.17
+ * @author Una Ada <una@anarchy.website>
+ * @version 0.1.0
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -19,6 +19,7 @@ import passport from 'passport';
 // see: https://techsparx.com/nodejs/esnext/dirname-es-modules.html
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
+import './config/database.js';
 
 /*----- Middleware -----------------------------------------------------------*/
 app.set('views', path.join(__dirname, 'views'));
