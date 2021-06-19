@@ -4,9 +4,10 @@
  * @version 0.1.3
  * @since 0.1.3
  */
-
+import dotenv from 'dotenv';
+dotenv.config()
 import mongoose from 'mongoose';
-mongoose.connect('mongodb://localhost/xylem', {
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
