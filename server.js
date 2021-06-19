@@ -25,20 +25,26 @@ import './config/database.js';
 import './config/passport.js';
 
 /*----- Middleware -----------------------------------------------------------*/
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 app.use(override('_method'));
 app.use(logger('dev'));
-app.use(session({
-  secret: 'temporary20210618',
-  resave: false,
-  saveUninitialized: true,
-}));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(
+  session({
+    secret: 'temporary20210618',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*----- Routers --------------------------------------------------------------*/
