@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.2.0
+ * @version 0.2.1
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
@@ -9,15 +9,13 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import User from '../models/user.js';
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
   /**
    * Renders a settings page for the current user.
-   * @param {express.Request} req 
-   * @param {express.Response} res 
+   * @param {import("express").Request} req HTTP GET Request.
+   * @param {import("express").Response} res HTTP Response.
    */
-  edit: (req, res) =>
-    res.send('TEST'),
+  edit: (req, res) => (req.user ? res.render('users/edit') : res.redirect('/')),
 };
