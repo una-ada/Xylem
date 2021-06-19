@@ -1,12 +1,11 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.4
+ * @version 0.1.5
  * @since 0.1.0
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import dotenv from 'dotenv';
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
@@ -17,12 +16,12 @@ import session from 'express-session';
 import passport from 'passport';
 
 /*----- Initialize -----------------------------------------------------------*/
-dotenv.config();
 // Infill for `__dirname`
 // see: https://techsparx.com/nodejs/esnext/dirname-es-modules.html
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
 import './config/database.js';
+import './config/passport.js';
 
 /*----- Middleware -----------------------------------------------------------*/
 app.set('views', path.join(__dirname, 'views'));
