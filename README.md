@@ -39,12 +39,11 @@ of three categories:
 
 ### Features &rarr; [GitHub Project][14]
 
-This [Kanban][15]-style project board covers what is missed by the Trello 
-board: the server-side implementation steps, i.e. "features" as opposed to 
-"user stories." User stories only define broad UX flows, which may include a 
-number of discrete steps for implementation and multiple stories may overlap at 
-certain steps. To remedy this, issues per feature (tagged "enhancement") are 
-opened on the repo, added to the project, and automated through pull requests.
+Where the Trello board is focused on user stories, this [Kanban][15]-style 
+project board is dedicated to features. Each feature is given an "enhancement" 
+issue on the repo and attached to the relevant cards on Trello using the 
+[GitHub Power-Up][16]. These issues are also automatically added to the project 
+board under "To do" until a pull request is made to close them.
 
 ### Entity Relationship Diagram (ERD) &rarr; [Lucid Document][1]
 
@@ -85,3 +84,4 @@ _Work in progress!_
 [13]: https://en.wikipedia.org/wiki/MEAN_(solution_stack)
 [14]: https://github.com/users/una-ada/projects/3
 [15]: https://en.wikipedia.org/wiki/Kanban_(development)
+[16]: https://trello.com/power-ups/55a5d916446f517774210004/github
