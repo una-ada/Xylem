@@ -1,7 +1,7 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.6
+ * @version 0.2.0
  * @since 0.1.0
  */
 
@@ -15,6 +15,7 @@ import override from 'method-override';
 import session from 'express-session';
 import passport from 'passport';
 import indexRouter from './routes/index.js';
+import usersRouter from './routes/users.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 // Infill for `__dirname`
