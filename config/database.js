@@ -1,7 +1,8 @@
 /**
  * Server configuration
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.0
+ * @version 0.1.3
+ * @since 0.1.3
  */
 
 import mongoose from 'mongoose';
