@@ -9,14 +9,18 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import {Router} from 'express';
+import { Router } from 'express';
 import usersCtrl from '../controllers/users.js';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
-router.route('/')
-  .put((req, res) => res.send('TEST'));
-router.get('/edit', usersCtrl.edit);
+router
+  .route('/')
+  .all((req, res, next) =>
+    req.isAuthenticated() ? next() : res.redirect('/oauth/google')
+  )
+  .get(usersCtrl.edit)
+  .put(usersCtrl.put);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
