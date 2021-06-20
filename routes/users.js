@@ -12,16 +12,17 @@
 import { Router } from 'express';
 import usersCtrl from '../controllers/users.js';
 
+/*----- Methods --------------------------------------------------------------*/
+const checkUser = (req, res, next) =>
+  req.user !== undefined ? next() : res.redirect('/oauth/google');
+
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
-router.get('/:handle', usersCtrl.show);
 router
   .route('/settings')
-  .all((req, res, next) =>
-    req.isAuthenticated() ? next() : res.redirect('/oauth/google')
-  )
-  .get(usersCtrl.edit)
-  .put(usersCtrl.put);
+  .get(checkUser, usersCtrl.edit)
+  .put(checkUser, usersCtrl.put);
+router.get('/:handle', usersCtrl.show);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
