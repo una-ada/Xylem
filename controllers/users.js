@@ -46,6 +46,6 @@ export default {
    */
   put: (req, res, next) =>
     req.user.update(req.body, { runValidators: true, context: 'query' }, err =>
-      err ? console.error(err) || next(err) : res.redirect('/user')
+      err ? console.error(err) || next(err) : res.redirect('/')
     ),
 };
