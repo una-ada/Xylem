@@ -15,13 +15,31 @@ _Work in progress!_
 
 ## Solutions
 
-_Work in progress!_
+Xylem is a Node.js application using a MongoDB, Express.js, and Node.js
+([MEN][13]) solution stack following a [Model-View-Controller][22] (MVC) 
+pattern. The project is hosted by [Heroku][20].
 
-<!-- TODO: Describe "technologies used" (Mongo, Node, HTML, CSS, &c.). -->
+### Model &rarr; [MongoDB][18]
 
-<!-- TODO: Write out "CONTRIBUTING" guide, covering styles and methods. -->
+The NoSQL database [MongoDB][18] is used for data storage, with [Mongoose][19] 
+as a native JavaScript object document mapper (ODM). Schemas in the `/models` 
+directory model the database as well as define validation functions. In 
+production, the database is hosted by [MongoDB Atlas][17] (currently using a 
+[Google Cloud Platform][21] (GCP) cluster).
 
-<!-- TODO: Write out explanation of repository structure. -->
+### View &rarr; [Express][25], [EJS][23]
+
+Server-side routing is managed by the [Express.js][25] web framework.
+
+Views are preprocessed with [Embedded JavaScript][23] (EJS) templates (written 
+in HTML with embedded tags for JS, similar to PHP) from the `/views` directory 
+or served statically using the [`express.static()`][24] middleware from the `/public` directory.
+
+### Controller &rarr; [Node][26]
+
+The server is all written in JavaScript and runs as a [Node.js][26] 
+application. The package type is set to `module` such that modularity of the 
+code is handled via ES 2015 modules rather than Node's default CommonJS modules.
 
 ## Planning and Development
 
@@ -85,3 +103,13 @@ _Work in progress!_
 [14]: https://github.com/users/una-ada/projects/3
 [15]: https://en.wikipedia.org/wiki/Kanban_(development)
 [16]: https://trello.com/power-ups/55a5d916446f517774210004/github
+[17]: https://www.mongodb.com/cloud/atlas
+[18]: https://www.mongodb.com/
+[19]: https://mongoosejs.com/
+[20]: http://heroku.com/home
+[21]: https://cloud.google.com/
+[22]: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+[23]: https://ejs.co/
+[24]: https://expressjs.com/en/starter/static-files.html
+[25]: https://expressjs.com/
+[26]: https://nodejs.org/en/
