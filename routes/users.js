@@ -1,7 +1,7 @@
 /**
  * Users router for mounting on /user
  * @author Una Ada <una@anarchy.website>
- * @version 0.2.1
+ * @version 0.3.1
  * @since 0.2.0
  * @module router/users
  * @see module:models/user
@@ -14,7 +14,7 @@ import usersCtrl from '../controllers/users.js';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
-router.get('/:handle', (req, res) => res.send(req.params.handle));
+router.get('/:handle', usersCtrl.show);
 router
   .route('/settings')
   .all((req, res, next) =>
