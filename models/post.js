@@ -14,14 +14,13 @@ const postSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'User',
     },
-    content: {
-      type: String
-    }
+    title: String,
+    content: String,
   },
   { timestamps: true }
-  );
+);
 
 /*----- Exports --------------------------------------------------------------*/
 export default mongoose.model('Post', postSchema);
