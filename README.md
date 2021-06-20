@@ -1,5 +1,7 @@
 # Xylem
 
+[![Dependency Status][27]][28]
+
 A simple micro-blogging site, developed to meet the requirements for
 [GA SEI-R][4] project 2 ([MEN][13] stack [CRUD][12] application).
 
@@ -113,3 +115,5 @@ _Work in progress!_
 [24]: https://expressjs.com/en/starter/static-files.html
 [25]: https://expressjs.com/
 [26]: https://nodejs.org/en/
+[27]: https://status.david-dm.org/gh/una-ada/Xylem.svg
+[28]: https://david-dm.org/una-ada/Xylem
