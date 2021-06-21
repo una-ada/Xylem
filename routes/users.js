@@ -14,7 +14,7 @@ import usersCtrl from '../controllers/users.js';
 
 /*----- Methods --------------------------------------------------------------*/
 const checkUser = (req, res, next) =>
-  req.user !== undefined ? next() : res.redirect('/oauth/google');
+  req.user !== undefined ? next() : res.redirect('/');
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();

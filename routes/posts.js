@@ -14,11 +14,12 @@ import postsCtrl from '../controllers/posts.js';
 
 /*----- Methods --------------------------------------------------------------*/
 const checkUser = (req, res, next) =>
-  req.user !== undefined ? next() : res.redirect('/oauth/google');
+  req.user !== undefined ? next() : res.redirect('/');
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
 router.get('/new', checkUser, postsCtrl.new);
+router.post('/', checkUser, (req, res) => res.send(JSON.stringify(req.body)));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
