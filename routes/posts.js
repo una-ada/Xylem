@@ -19,7 +19,7 @@ const checkUser = (req, res, next) =>
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
 router.get('/new', checkUser, postsCtrl.new);
-router.post('/', checkUser, (req, res) => res.send(JSON.stringify(req.body)));
+router.post('/', checkUser, postsCtrl.create);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

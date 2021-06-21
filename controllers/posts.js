@@ -19,4 +19,21 @@ export default {
    * @arg {import('express').Response} res Express HTTP Response
    */
   new: (req, res) => res.render('posts/new'),
+  /**
+   * Create a new post.
+   * @arg {import('express').Request} req Express HTTP POST Request
+   * @arg {import('express').Response} res Express HTTP Response
+   */
+  create: (req, res) =>
+    Post.create(
+      Object.assign(req.body, {
+        user: req.user._id,
+        // Currently unused, will be used for Markdown parsing in the future
+        contentRich: req.body.content,
+      }),
+      (err, post) =>
+        err
+          ? console.error(err) || res.send(500)
+          : res.redirect(`/posts/${post._id}`)
+    ),
 };

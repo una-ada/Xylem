@@ -1,7 +1,7 @@
 /**
  * Post model definition.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.0
+ * @version 0.3.1
  * @since 0.3.0
  * @module models/post
  * @see module:controllers/post
@@ -20,6 +20,7 @@ const postSchema = new mongoose.Schema(
     },
     title: String,
     content: String,
+    contentRich: String,
   },
   { timestamps: true }
 );
