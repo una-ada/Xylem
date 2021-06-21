@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.1
+ * @version 0.3.4
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
@@ -10,6 +10,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import User from '../models/user.js';
+import Post from '../models/post.js';
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
@@ -20,16 +21,15 @@ export default {
    * @arg {import("express").NextFunction} next Next function in the pipeline.
    */
   show: (req, res, next) =>
-    User.findOne({ handle: req.params.handle }, (err, user) =>
+    User.findOne({ handle: req.params.handle }, (err, profile) =>
       err
         ? console.error(err) || next(err)
-        : !user
+        : !profile
         ? res.redirect('/')
-        : res.send(
-            JSON.stringify({
-              name: user.displayName,
-              handle: user.handle,
-            })
+        : Post.find({ user: profile._id }, (err, posts) =>
+            err
+              ? console.error(err) || next(err)
+              : res.render('users/show', { profile, posts })
           )
     ),
   /**
