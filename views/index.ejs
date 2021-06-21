@@ -1,6 +1,8 @@
 <% if(user){ %>
   <a href="/logout">Logout</a><br />
-  <a href="/user/settings">Settings</a>
+  <a href="/user/settings">Settings</a><br />
+  <a href="/user/<%=user.handle%>">Profile</a><br />
+  <a href="/posts/new">New Post</a>
 <% } else { %>
   <a href="/oauth/google">Login with Google</a>
 <% } %>
