@@ -21,7 +21,7 @@ const router = new Router();
 router.post('/', checkUser, postsCtrl.create);
 router.get('/new', checkUser, postsCtrl.new);
 router.route('/:id')
-  .get((req, res) => res.send(req.params.id));
+  .get(postsCtrl.show);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
