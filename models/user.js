@@ -1,7 +1,7 @@
 /**
  * User model definition.
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.6
+ * @version 0.3.1
  * @since 0.1.6
  * @module models/user
  */
@@ -14,8 +14,8 @@ import mongoose from 'mongoose';
 export const validStrings = {
   /**
    * @param {RegExp} email Email validation RegExp
-   * 
-   * Almost [RFC822]{@link https://datatracker.ietf.org/doc/html/rfc822} 
+   *
+   * Almost [RFC822]{@link https://datatracker.ietf.org/doc/html/rfc822}
    * compliant. Taken from {@link https://gist.github.com/badsyntax/719800}.
    */
   email:
@@ -48,7 +48,9 @@ const userSchema = new mongoose.Schema(
               _id: {
                 $ne:
                   // Handle update validation by checking for query scope
-                  this[this instanceof mongoose.Query ? _conditions._id : _id],
+                  this instanceof mongoose.Query
+                    ? this._conditions._id
+                    : this._id,
               },
             });
             return !count;
