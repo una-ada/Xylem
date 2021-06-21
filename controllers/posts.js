@@ -1,7 +1,7 @@
 /**
  * Posts controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.2
+ * @version 0.3.3
  * @since 0.3.1
  * @module controllers/posts
  * @see module:models/post
@@ -67,6 +67,24 @@ export default {
         ? console.error(err) || next(err)
         : req.user && req.user._id.equals(post.user)
         ? res.render('posts/edit', { post })
+        : res.sendStatus(403)
+    ),
+  /**
+   * Update a post.
+   * @arg {import('express').Request} req Express HTTP PUT Request.
+   * @arg {import('express').Response} res Express HTTP Response
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   */
+  update: (req, res, next) =>
+    Post.findById(req.params.id, (err, post) =>
+      err
+        ? console.error(err) || next(err)
+        : req.user && req.user._id.equals(post.user)
+        ? post.update(req.body, err =>
+            err
+              ? console.error(err) || next(err)
+              : res.redirect(`/posts/${req.params.id}`)
+          )
         : res.sendStatus(403)
     ),
   /**
