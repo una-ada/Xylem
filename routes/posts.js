@@ -12,9 +12,13 @@
 import { Router } from 'express';
 import postsCtrl from '../controllers/posts.js';
 
+/*----- Methods --------------------------------------------------------------*/
+const checkUser = (req, res, next) =>
+  req.user !== undefined ? next() : res.redirect('/oauth/google');
+
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router.get('/new', (res, req) => res.send('TEST'));
+router.get('/new', checkUser, (res, req) => res.send('TEST'));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
