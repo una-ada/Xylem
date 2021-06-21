@@ -20,15 +20,17 @@ export default {
    * @arg {import("express").NextFunction} next Next function in the pipeline.
    */
   show: (req, res, next) =>
-    Post.findById(req.params.id, (err, post) =>
-      err
-        ? // Mediocre error handling, throws some complicated shit for 
-          // undefined IDs because they don't cast properly to ObjectId :)
-          console.error(err) || next(err)
-        : post
-        ? res.render('posts/show', { post })
-        : res.redirect('/')
-    ),
+    Post.findById(req.params.id)
+      .populate('user')
+      .exec((err, post) =>
+        err
+          ? // Mediocre error handling, throws some complicated shit for
+            // undefined IDs because they don't cast properly to ObjectId :)
+            console.error(err) || next(err)
+          : post
+          ? res.render('posts/show', { post })
+          : res.redirect('/')
+      ),
   /**
    * Render a form for creating new posts.
    * @arg {import('express').Request} req Express HTTP GET Request.
