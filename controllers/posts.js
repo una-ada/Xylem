@@ -18,5 +18,5 @@ export default {
    * @arg {import('express').Request} req Express HTTP GET Request.
    * @arg {import('express').Response} res Express HTTP Response
    */
-  new: (req, res) => res.send('TEST'),
+  new: (req, res) => res.render('posts/new'),
 };
