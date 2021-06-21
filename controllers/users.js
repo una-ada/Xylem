@@ -17,7 +17,7 @@ export default {
    * Renders a profile for the user specified by :handle
    * @arg {import("express").Request} req Express HTTP GET Request.
    * @arg {import("express").Response} res Express HTTP Response.
-   * @arg {import("express").NextFunction} next Next function in the pipelin.
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
    */
   show: (req, res, next) =>
     User.findOne({ handle: req.params.handle }, (err, user) =>

@@ -17,13 +17,18 @@ export default {
    * Render the show view for a single post.
    * @arg {import('express').Request} req Express HTTP GET Request.
    * @arg {import('express').Response} res Express HTTP Response
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
    */
-  show: (req, res) => Post.findById(req.params.id, (err, post) =>
-    err
-      ? console.error(err) || res.send(500)
-      : post
-        ? res.send(JSON.stringify(post))
-        : res.redirect('/')),
+  show: (req, res, next) =>
+    Post.findById(req.params.id, (err, post) =>
+      err
+        ? // Mediocre error handling, throws some complicated shit for 
+          // undefined IDs because they don't cast properly to ObjectId :)
+          console.error(err) || next(err)
+        : post
+        ? res.render('posts/show', { post })
+        : res.redirect('/')
+    ),
   /**
    * Render a form for creating new posts.
    * @arg {import('express').Request} req Express HTTP GET Request.
@@ -34,8 +39,9 @@ export default {
    * Create a new post.
    * @arg {import('express').Request} req Express HTTP POST Request
    * @arg {import('express').Response} res Express HTTP Response
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
    */
-  create: (req, res) =>
+  create: (req, res, next) =>
     Post.create(
       Object.assign(req.body, {
         user: req.user._id,
@@ -44,7 +50,7 @@ export default {
       }),
       (err, post) =>
         err
-          ? console.error(err) || res.send(500)
+          ? console.error(err) || next(err)
           : res.redirect(`/posts/${post._id}`)
     ),
 };
