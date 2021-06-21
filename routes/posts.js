@@ -18,8 +18,10 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router.get('/new', checkUser, postsCtrl.new);
 router.post('/', checkUser, postsCtrl.create);
+router.get('/new', checkUser, postsCtrl.new);
+router.route('/:id')
+  .get((req, res) => res.send(req.params.id));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
