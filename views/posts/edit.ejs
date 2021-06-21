@@ -1,0 +1,16 @@
+<form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+  <label>
+    Title:
+    <input name="title" type="text" value="<%= post.title %>" />
+  </label>
+  <br />
+  <label for="content">Content:</label>
+  <br />
+  <textarea
+    id="content"
+    name="content"
+    cols="80" rows="40"
+  ><%= post.content %></textarea>
+  <br />
+  <input type="submit" value="Update" />
+</form>

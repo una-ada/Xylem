@@ -66,7 +66,7 @@ export default {
       err
         ? console.error(err) || next(err)
         : req.user && req.user._id.equals(post.user)
-        ? res.send('TEST')
+        ? res.render('posts/edit', { post })
         : res.sendStatus(403)
     ),
   /**
