@@ -18,7 +18,7 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router.get('/new', checkUser, (res, req) => res.send('TEST'));
+router.get('/new', checkUser, postsCtrl.new);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

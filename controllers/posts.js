@@ -13,5 +13,10 @@ import Post from '../models/post.js';
 
 /*---- Export Methods --------------------------------------------------------*/
 export default {
-
+  /**
+   * Render a form for creating new posts.
+   * @arg {import('express').Request} req Express HTTP GET Request.
+   * @arg {import('express').Response} res Express HTTP Response
+   */
+  new: (req, res) => res.send('TEST'),
 };
