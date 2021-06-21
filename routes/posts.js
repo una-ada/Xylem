@@ -23,7 +23,7 @@ router.get('/new', checkUser, postsCtrl.new);
 router.route('/:id')
   .get(postsCtrl.show)
   .delete(checkUser, postsCtrl.delete);
-router.get('/:id/edit', checkUser, (req, res) => res.send('Editor test'));
+router.get('/:id/edit', checkUser, postsCtrl.edit);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

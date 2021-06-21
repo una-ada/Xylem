@@ -56,6 +56,20 @@ export default {
           : res.redirect('/')
       ),
   /**
+   * Render a form to edit a post.
+   * @arg {import('express').Request} req Express HTTP GET Request.
+   * @arg {import('express').Response} res Express HTTP Response
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   */
+  edit: (req, res, next) =>
+    Post.findById(req.params.id, (err, post) =>
+      err
+        ? console.error(err) || next(err)
+        : req.user && req.user._id.equals(post.user)
+        ? res.send('TEST')
+        : res.sendStatus(403)
+    ),
+  /**
    * Delete a post.
    * @arg {import('express').Request} req Express HTTP DELETE Request
    * @arg {import('express').Response} res Express HTTP Response
