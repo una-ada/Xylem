@@ -1,26 +1,34 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.2.0
+ * @version 0.3.2
  * @since 0.1.0
  */
 
 /*----- Imports --------------------------------------------------------------*/
+import dotenv from 'dotenv';
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import override from 'method-override';
+import mongoose from 'mongoose';
 import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import postsRouter from './routes/posts.js';
 
 /*----- Initialize -----------------------------------------------------------*/
-// Infill for `__dirname`
-// see: https://techsparx.com/nodejs/esnext/dirname-es-modules.html
+dotenv.config();
+/**
+ * @const {String} __dirname Package directory.
+ *
+ * Infill for CommonJS module `__dirname`.
+ * {@link https://techsparx.com/nodejs/esnext/dirname-es-modules.html}
+ * */
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
 import './config/database.js';
@@ -33,7 +41,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(
   session({
-    secret: 'temporary20210618',
+    secret: process.env.SECRET,
+    store: MongoStore.create({
+      mongoUrl: process.env.DATABASE_URL,
+    }),
     resave: false,
     saveUninitialized: true,
   })
