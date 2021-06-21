@@ -16,6 +16,7 @@ import session from 'express-session';
 import passport from 'passport';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
+import postsRouter from './routes/posts.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 // Infill for `__dirname`
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*----- Routers --------------------------------------------------------------*/
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/posts', postsRouter);
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {
