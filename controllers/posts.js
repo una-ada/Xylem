@@ -14,24 +14,6 @@ import Post from '../models/post.js';
 /*---- Export Methods --------------------------------------------------------*/
 export default {
   /**
-   * Render the show view for a single post.
-   * @arg {import('express').Request} req Express HTTP GET Request.
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
-   */
-  show: (req, res, next) =>
-    Post.findById(req.params.id)
-      .populate('user')
-      .exec((err, post) =>
-        err
-          ? // Mediocre error handling, throws some complicated shit for
-            // undefined IDs because they don't cast properly to ObjectId :)
-            console.error(err) || next(err)
-          : post
-          ? res.render('posts/show', { post })
-          : res.redirect('/')
-      ),
-  /**
    * Render a form for creating new posts.
    * @arg {import('express').Request} req Express HTTP GET Request.
    * @arg {import('express').Response} res Express HTTP Response
@@ -55,6 +37,24 @@ export default {
           ? console.error(err) || next(err)
           : res.redirect(`/posts/${post._id}`)
     ),
+  /**
+   * Render the show view for a single post.
+   * @arg {import('express').Request} req Express HTTP GET Request.
+   * @arg {import('express').Response} res Express HTTP Response
+   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   */
+  show: (req, res, next) =>
+    Post.findById(req.params.id)
+      .populate('user')
+      .exec((err, post) =>
+        err
+          ? // Mediocre error handling, throws some complicated shit for
+            // undefined IDs because they don't cast properly to ObjectId :)
+            console.error(err) || next(err)
+          : post
+          ? res.render('posts/show', { post })
+          : res.redirect('/')
+      ),
   /**
    * Delete a post.
    * @arg {import('express').Request} req Express HTTP DELETE Request
