@@ -5,6 +5,7 @@
  * @since 0.3.1
  * @module routes/posts
  * @see module:models/post
+ * @see module:controllers/post
  */
 
 /*----- Imports --------------------------------------------------------------*/

@@ -4,6 +4,8 @@
  * @version 0.3.0
  * @since 0.3.0
  * @module models/post
+ * @see module:controllers/post
+ * @see module:routes/post
  */
 
 /*----- Imports --------------------------------------------------------------*/
