@@ -3,7 +3,7 @@
 <p><%= post.content %></p>
 <% if(user && user._id.equals(post.user._id)) { %>
   <a>Edit</a>
-  <form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+  <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
     <input type="submit" value="Delete" />
   </form>
 <% }; %>
