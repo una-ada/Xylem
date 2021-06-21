@@ -9,9 +9,9 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import Post from './models/post.js';
+import Post from '../models/post.js';
 
 /*---- Export Methods --------------------------------------------------------*/
 export default {
-  
+
 };

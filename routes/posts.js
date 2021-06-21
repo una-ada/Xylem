@@ -10,9 +10,11 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
+import postsCtrl from '../controllers/posts.js';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
+router.get('/new', (res, req) => res.send('TEST'));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
