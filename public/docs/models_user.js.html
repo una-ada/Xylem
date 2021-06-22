@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>models/user.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-controllers_posts.html">controllers/posts</a><ul class='methods'><li data-type='method'><a href="module-controllers_posts.html#.create">create</a></li><li data-type='method'><a href="module-controllers_posts.html#.delete">delete</a></li><li data-type='method'><a href="module-controllers_posts.html#.edit">edit</a></li><li data-type='method'><a href="module-controllers_posts.html#.new">new</a></li><li data-type='method'><a href="module-controllers_posts.html#.show">show</a></li><li data-type='method'><a href="module-controllers_posts.html#.update">update</a></li></ul></li><li><a href="module-controllers_users.html">controllers/users</a><ul class='methods'><li data-type='method'><a href="module-controllers_users.html#.edit">edit</a></li><li data-type='method'><a href="module-controllers_users.html#.put">put</a></li><li data-type='method'><a href="module-controllers_users.html#.show">show</a></li></ul></li><li><a href="module-models_post.html">models/post</a></li><li><a href="module-models_user.html">models/user</a></li><li><a href="module-router_users.html">router/users</a></li><li><a href="module-routes_index.html">routes/index</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-server.html">server</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">models/user.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * User model definition.
+ * @author Una Ada &lt;una@anarchy.website>
+ * @version 0.3.1
+ * @since 0.1.6
+ * @module models/user
+ */
+
+/*----- Imports --------------------------------------------------------------*/
+import mongoose from 'mongoose';
+
+/*----- Constants ------------------------------------------------------------*/
+/** @const {Object.&lt;string,RegExp>} validStrings RegExp matching validators. */
+export const validStrings = {
+  /**
+   * @param {RegExp} email Email validation RegExp
+   *
+   * Almost [RFC822]{@link https://datatracker.ietf.org/doc/html/rfc822}
+   * compliant. Taken from {@link https://gist.github.com/badsyntax/719800}.
+   */
+  email:
+    /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/,
+};
+
+/*----- Schema ---------------------------------------------------------------*/
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      validate: [
+        {
+          // Validate for proper e-mail string
+          validator: value => validStrings.email.test(value),
+          msg: 'Invalid e-mail!',
+        },
+      ],
+    },
+    handle: {
+      type: String,
+      validate: [
+        {
+          // Validate for uniqueness of handle
+          validator: async function (value) {
+            let count = await mongoose.models.User.countDocuments({
+              handle: value,
+              // Don't match to current document
+              // Would return a validation error if the value was not changed
+              _id: {
+                $ne:
+                  // Handle update validation by checking for query scope
+                  this instanceof mongoose.Query
+                    ? this._conditions._id
+                    : this._id,
+              },
+            });
+            return !count;
+          },
+          msg: 'Username already taken!',
+        },
+      ],
+    },
+    displayName: String,
+    avatar: String,
+    googleId: String,
+  },
+  { timestamps: true }
+);
+
+/*----- Exports --------------------------------------------------------------*/
+export default mongoose.model('User', userSchema);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Jun 22 2021 14:56:35 GMT-0700 (Pacific Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
