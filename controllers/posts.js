@@ -15,15 +15,15 @@ import Post from '../models/post.js';
 export default {
   /**
    * Render a form for creating new posts.
-   * @arg {import('express').Request} req Express HTTP GET Request.
-   * @arg {import('express').Response} res Express HTTP Response
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response
    */
   new: (req, res) => res.render('posts/new'),
   /**
    * Create a new post.
-   * @arg {import('express').Request} req Express HTTP POST Request
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP POST Request
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   create: (req, res, next) =>
     Post.create(
@@ -39,9 +39,9 @@ export default {
     ),
   /**
    * Render the show view for a single post.
-   * @arg {import('express').Request} req Express HTTP GET Request.
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   show: (req, res, next) =>
     Post.findById(req.params.id)
@@ -57,9 +57,9 @@ export default {
       ),
   /**
    * Render a form to edit a post.
-   * @arg {import('express').Request} req Express HTTP GET Request.
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   edit: (req, res, next) =>
     Post.findById(req.params.id, (err, post) =>
@@ -71,9 +71,9 @@ export default {
     ),
   /**
    * Update a post.
-   * @arg {import('express').Request} req Express HTTP PUT Request.
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP PUT Request.
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   update: (req, res, next) =>
     Post.findById(req.params.id, (err, post) =>
@@ -89,9 +89,9 @@ export default {
     ),
   /**
    * Delete a post.
-   * @arg {import('express').Request} req Express HTTP DELETE Request
-   * @arg {import('express').Response} res Express HTTP Response
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP DELETE Request
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   delete: (req, res, next) =>
     Post.findById(req.params.id, (err, post) =>

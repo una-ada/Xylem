@@ -1,8 +1,9 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.2
+ * @version 0.4.4
  * @since 0.1.0
+ * @module server
  */
 
 /*----- Imports --------------------------------------------------------------*/

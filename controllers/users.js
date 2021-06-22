@@ -16,9 +16,9 @@ import Post from '../models/post.js';
 export default {
   /**
    * Renders a profile for the user specified by :handle
-   * @arg {import("express").Request} req Express HTTP GET Request.
-   * @arg {import("express").Response} res Express HTTP Response.
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response.
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   show: (req, res, next) =>
     User.findOne({ handle: req.params.handle }, (err, profile) =>
@@ -34,15 +34,15 @@ export default {
     ),
   /**
    * Renders a settings page for the current user.
-   * @arg {import("express").Request} req Express HTTP GET Request.
-   * @arg {import("express").Response} res Express HTTP Response.
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response.
    */
   edit: (req, res) => res.render('users/edit'),
   /**
    * Save settings for the current user.
-   * @arg {import("express").Request} req Express HTTP PUT Request.
-   * @arg {import("express").Response} res Express HTTP Response.
-   * @arg {import("express").NextFunction} next Next function in the pipeline.
+   * @arg {express.Request} req Express HTTP PUT Request.
+   * @arg {express.Response} res Express HTTP Response.
+   * @arg {express.NextFunction} next Next function in the pipeline.
    */
   put: (req, res, next) =>
     req.user.update(req.body, { runValidators: true, context: 'query' }, err =>
