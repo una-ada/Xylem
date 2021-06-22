@@ -22,6 +22,7 @@
     "passport-google-oauth": "^2.0.0"
   },
   "devDependencies": {
+    "grunt": "^1.4.1",
     "jsdoc": "^3.6.7"
   }
 }
