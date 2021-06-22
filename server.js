@@ -27,7 +27,7 @@ dotenv.config();
  *
  * Infill for CommonJS module `__dirname`.
  * {@link https://techsparx.com/nodejs/esnext/dirname-es-modules.html}
- * */
+ */
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
 import './config/database.js';
