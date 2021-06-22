@@ -28,7 +28,19 @@ module.exports = grunt => {
         dest: 'docs',
       },
     },
+    // https://www.npmjs.com/package/grunt-dart-sass
+    'dart-sass': {
+      target: {
+        files: [{
+          expand: true,
+          src: 'src/styles/*.scss',
+          dest: 'public/styles',
+          ext: '.css'
+        }]
+      }
+    }
   });
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.registerTask('default', ['jsdoc']);
+  grunt.loadNpmTasks('grunt-dart-sass');
+  grunt.registerTask('default', ['jsdoc', 'dart-sass']);
 };
