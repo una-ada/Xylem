@@ -1,7 +1,7 @@
 /**
  * @file Xylem Gruntfile
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.4
+ * @version 0.4.5
  * @since 0.4.0
  *
  * About Gruntfiles: {@link https://gruntjs.com/sample-gruntfile}
@@ -45,6 +45,10 @@ module.exports = grunt => {
           'routes/*.js',
         ],
         dest: 'public/docs',
+        options: {
+          // https://github.com/clenemt/docdash
+          template: 'node_modules/docdash',
+        },
       },
     },
     // https://www.npmjs.com/package/grunt-dart-sass
