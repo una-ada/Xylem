@@ -1,7 +1,7 @@
 /**
  * @file Xylem Gruntfile
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.2
+ * @version 0.4.3
  * @since 0.4.0
  *
  * About Gruntfiles: {@link https://gruntjs.com/sample-gruntfile}
@@ -19,8 +19,20 @@
  * @arg grunt The Grunt package
  */
 module.exports = grunt => {
+  /*----- Configure Tasks ----------------------------------------------------*/
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    // https://github.com/gruntjs/grunt-contrib-watch
+    watch: {
+      css: {
+        files: ['src/styles/*.scss'],
+        tasks: ['dart-sass'],
+      },
+      js: {
+        files: ['*.js'],
+        tasks: ['jsdoc'],
+      },
+    },
     // https://www.npmjs.com/package/grunt-jsdoc
     jsdoc: {
       dist: {
@@ -31,16 +43,24 @@ module.exports = grunt => {
     // https://www.npmjs.com/package/grunt-dart-sass
     'dart-sass': {
       target: {
-        files: [{
-          expand: true,
-          src: 'src/styles/*.scss',
-          dest: 'public/styles',
-          ext: '.css'
-        }]
-      }
-    }
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: 'styles/*.scss',
+            dest: 'public/',
+            ext: '.css',
+          },
+        ],
+      },
+    },
   });
+
+  /*------ Load Tasks --------------------------------------------------------*/
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-dart-sass');
-  grunt.registerTask('default', ['jsdoc', 'dart-sass']);
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  /*----- Register Tasks -----------------------------------------------------*/
+  grunt.registerTask('default', ['watch']);
 };
