@@ -1,7 +1,7 @@
 /**
  * @file Xylem Gruntfile
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.0
+ * @version 0.4.1
  * @since 0.4.0
  *
  * About Gruntfiles: {@link https://gruntjs.com/sample-gruntfile}
@@ -21,6 +21,7 @@
 module.exports = grunt => {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    // https://www.npmjs.com/package/grunt-jsdoc
     jsdoc: {
       dist: {
         src: '*.js',
