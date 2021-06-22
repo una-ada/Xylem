@@ -1,8 +1,9 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.2
+ * @version 0.4.4
  * @since 0.1.0
+ * @module server
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -27,7 +28,7 @@ dotenv.config();
  *
  * Infill for CommonJS module `__dirname`.
  * {@link https://techsparx.com/nodejs/esnext/dirname-es-modules.html}
- * */
+ */
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
 import './config/database.js';
