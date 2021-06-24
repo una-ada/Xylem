@@ -20,6 +20,7 @@ import passport from 'passport';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import postsRouter from './routes/posts.js';
+import likesRouter from './routes/likes.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 dotenv.config();
@@ -64,6 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/posts/:id/likes', likesRouter);
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {
