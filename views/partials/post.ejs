@@ -1,0 +1,100 @@
+<div class="post" id="post--<%= post._id %>">
+  <div class="post__head">
+    <img class="post__avatar" />
+    <div class="post__name">
+      <%= post.user.displayName %>
+      <span class="post__handle">
+        (@<%= post.user.handle %>)
+      </span>
+    </div>
+    <div class="post__time">
+      <a href="/posts/<%= post._id %>">
+        <%= post.createdAt %>
+      </a>
+    </div>
+    <% if(user && user._id.equals(post.user._id)) { %>
+      <div class="post__settings">
+        <span class="post__button material-icons-outlined">settings</span>
+        <ul class="post__settings-list">
+          <li><a href="/posts/<%= post._id %>/edit">Edit</a></li>
+          <li>
+            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete" />
+            </form>
+          </li>
+        </ul>
+      </div>
+    <% }; %> 
+  </div>
+  <div class="post__content">
+    <%= post.content %>
+  </div>
+  <% if(user){ %> 
+    <div class="post__interact">
+      <div class="post__action">
+        <% if(!showComments){ %>
+          <a href="/posts/<%= post._id %>">
+        <% } %>
+        <span class="post__button material-icons-outlined">mode_comment</span>
+        <% if(!showComments){ %>
+          </a>
+        <% } %>
+        <span class="post__count"><%= post.comments.length %></span>
+      </div>
+      <div class="post__action">
+        <% if(post.likes.filter(like => user._id.equals(like.user)).length) { %>
+          <form
+            action="/posts/<%= post._id %>/likes?_method=DELETE"
+            method="POST"
+          >
+            <input
+              class="post__button material-icons-outlined"
+              type="submit"
+              value="favorite"
+            />
+          </form>
+        <% } else { %>
+          <form
+            action="/posts/<%= post._id %>/likes"
+            method="POST"
+          >
+            <input
+              class="post__button material-icons-outlined"
+              type="submit"
+              value="favorite_border"
+            />
+          </form> 
+        <% }; %>
+        <span class="post__count"><%= post.likes.length %></span>
+      </div>
+    </div>
+  <% }; %>
+  <% if(showComments){ %> 
+    <div class="post__comments">
+      <% post.comments.forEach(comment => { %>
+        <div class="comment">
+          <img class="comment__avatar" />
+          <div class="comment__name">
+            <%= comment.user.displayName %>
+            <span class="comment__handle">
+              (@<%= comment.user.handle %>)
+            </span>
+          </div>
+          <div class="comment__content">
+            <%= comment.content %>
+          </div>
+          <div class="comment__foot">
+            <%= comment.createdAt %> &bull;
+            <% if(user._id.equals(comment.user._id)) { %>
+              <form
+                action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
+                method="POST">
+                <input class="comment__button" type="submit" value="Delete" />
+              </form>
+            <% } %> 
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% }; %>
+</div>
