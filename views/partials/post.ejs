@@ -2,10 +2,12 @@
   <div class="post__head">
     <img class="post__avatar" />
     <div class="post__name">
-      <%= post.user.displayName %>
-      <span class="post__handle">
-        (@<%= post.user.handle %>)
-      </span>
+      <a href="/user/<%= post.user.handle %>">
+        <%= post.user.displayName %>
+        <span class="post__handle">
+          @<%= post.user.handle %>
+        </span>
+      </a>
     </div>
     <div class="post__time">
       <a href="/posts/<%= post._id %>">
@@ -14,7 +16,7 @@
     </div>
     <% if(user && user._id.equals(post.user._id)) { %>
       <div class="post__settings">
-        <span class="post__button material-icons-outlined">settings</span>
+        <span class="post__button material-icons">settings</span>
         <ul class="post__settings-list">
           <li><a href="/posts/<%= post._id %>/edit">Edit</a></li>
           <li>
@@ -35,7 +37,7 @@
         <% if(!showComments){ %>
           <a href="/posts/<%= post._id %>">
         <% } %>
-        <span class="post__button material-icons-outlined">mode_comment</span>
+        <span class="post__button material-icons">mode_comment</span>
         <% if(!showComments){ %>
           </a>
         <% } %>
@@ -48,7 +50,7 @@
             method="POST"
           >
             <input
-              class="post__button material-icons-outlined"
+              class="post__button material-icons"
               type="submit"
               value="favorite"
             />
@@ -59,7 +61,7 @@
             method="POST"
           >
             <input
-              class="post__button material-icons-outlined"
+              class="post__button material-icons"
               type="submit"
               value="favorite_border"
             />
@@ -75,10 +77,12 @@
         <div class="comment">
           <img class="comment__avatar" />
           <div class="comment__name">
-            <%= comment.user.displayName %>
-            <span class="comment__handle">
-              (@<%= comment.user.handle %>)
-            </span>
+            <a href="/user/<%= post.user.handle %>">
+              <%= comment.user.displayName %>
+              <span class="comment__handle">
+                @<%= comment.user.handle %>
+              </span>
+            </a>
           </div>
           <div class="comment__content">
             <%= comment.content %>
