@@ -19,7 +19,7 @@ const checkUser = (req, res, next) =>
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
 router.route('/')
-  .get(checkUser, (req, res) => res.sendStatus(200))
+  .get(checkUser, postsCtrl.index)
   .post(checkUser, postsCtrl.create);
 router.get('/new', checkUser, postsCtrl.new);
 router.route('/:id')

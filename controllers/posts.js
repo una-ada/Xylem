@@ -10,9 +10,33 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import Post from '../models/post.js';
+import Follow from '../models/follow.js';
 
 /*---- Export Methods --------------------------------------------------------*/
 export default {
+  /**
+   * Index of posts for a user.
+   * @arg {express.Request} req Express HTTP GET Request
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
+   */
+  index: (req, res, next) =>
+    Follow.find({ from: req.user._id }, (err, follows) =>
+      err
+        ? console.error(err) || next(err)
+        : Post.find(
+            {
+              $or: [
+                { user: { $in: follows.map(follow => follow.to) } },
+                { user: req.user._id },
+              ],
+            },
+            (err, posts) =>
+              err
+                ? console.error(err) || next(err)
+                : res.render('posts/index', { posts })
+          )
+    ),
   /**
    * Render a form for creating new posts.
    * @arg {express.Request} req Express HTTP GET Request.
