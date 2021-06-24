@@ -9,7 +9,7 @@
 }
 .post__head {
   position: relative;
-  margin: 10px 10px 0 10px;
+  margin: 10px;
   height: 36px;
 }
 .post__avatar {
@@ -61,11 +61,10 @@
 }
 .post__content {
   clear: both;
+  margin: 0 10px;
   text-align: justify;
   word-break: break-word;
   width: 480px;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
 }
 .post__comments {
   padding: 10px;
