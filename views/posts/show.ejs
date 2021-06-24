@@ -33,5 +33,10 @@ if(user) {
 <% }; %>
 <h3>Comments</h3>
 <% post.comments.forEach(comment => { %>
-  <p><%= comment.user.displayName %>: <%= comment.content %></p>  
+  <p><%= comment.user.displayName %>: <%= comment.content %></p>
+  <% if(user._id.equals(comment.user._id)) { %>
+    <form action="/posts/<%= post._id %>/comments?_method=DELETE" method="POST">
+      <input type="submit" value="Delete" />
+    </form>
+  <% } %> 
 <% }); %>

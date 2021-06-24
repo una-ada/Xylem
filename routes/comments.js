@@ -20,7 +20,8 @@ const checkUser = (req, res, next) =>
 const router = new Router();
 router
   .route('/:id/comments')
-  .post(checkUser, commentsCtrl.create);
+  .post(checkUser, commentsCtrl.create)
+  .delete(checkUser, (req, res) => res.send('TEST'));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
