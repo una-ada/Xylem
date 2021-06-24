@@ -33,5 +33,5 @@ if(user) {
 <% }; %>
 <h3>Comments</h3>
 <% post.comments.forEach(comment => { %>
-  <p><%= comment.content %></p>  
+  <p><%= comment.user.displayName %>: <%= comment.content %></p>  
 <% }); %>
