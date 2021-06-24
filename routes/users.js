@@ -23,7 +23,7 @@ router
   .get(checkUser, usersCtrl.edit)
   .put(checkUser, usersCtrl.put);
 router.get('/:handle', usersCtrl.show);
-router.get('/:handle/likes', (req, res) => res.send('TEST'));
+router.get('/:handle/likes', usersCtrl.showLikes);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

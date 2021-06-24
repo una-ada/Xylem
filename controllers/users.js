@@ -29,7 +29,34 @@ export default {
         : Post.find({ user: profile._id }, (err, posts) =>
             err
               ? console.error(err) || next(err)
-              : res.render('users/show', { profile, posts })
+              : res.render('users/show', { title: 'Posts', profile, posts })
+          )
+    ),
+  /**
+   * Renders a list of likes for the user specified by :handle
+   * @arg {express.Request} req Express HTTP GET Request.
+   * @arg {express.Response} res Express HTTP Response.
+   * @arg {express.NextFunction} next Next function in the pipeline.
+   */
+  showLikes: (req, res, next) =>
+    User.findOne({ handle: req.params.handle }, (err, profile) =>
+      err
+        ? console.error(err) || next(err)
+        : !profile
+        ? res.redirect('/')
+        : Post.aggregate([
+            // Get all posts which have been liked by the user
+            { $match: { 'likes.user': profile._id } },
+            // Split posts such that each copy contains a single like
+            { $unwind: '$likes' },
+            // Get posts whose like is owned by the user
+            { $match: { 'likes.user': profile._id } },
+            // Sort the posts by the like id
+            { $sort: { 'likes._id': -1 } },
+          ]).exec((err, posts) =>
+            err
+              ? console.error(err) || next(err)
+              : res.render('users/show', { title: 'Likes', profile, posts })
           )
     ),
   /**
