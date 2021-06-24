@@ -5,10 +5,12 @@
  * @since 0.5.0
  * @module routes/likes
  * @see module:models/post
+ * @see module:controllers/likes
  */
 
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
+import likesCtrl from '../controllers/likes.js';
 
 /*----- Methods --------------------------------------------------------------*/
 const checkUser = (req, res, next) =>
@@ -17,7 +19,7 @@ const checkUser = (req, res, next) =>
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
 router.route('/:id/likes')
-  .post(checkUser, (req, res) => res.send(req.params.id));
+  .post(checkUser, likesCtrl.create);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

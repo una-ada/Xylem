@@ -3,14 +3,22 @@
   by <a href="/user/<%= post.user.handle %>"><%= post.user.displayName %></a>
 </p>
 <p><%= post.content %></p>
-<% if(user) { %>
-  <form action="/posts/<%= post._id %>/likes" method="POST">
-    <input type="submit" value="Like" />
-  </form> 
-  <% if(user._id.equals(post.user._id)) { %>
+<%
+if(user) {
+  if(post.likes.filter(like => user._id.equals(like.user)).length) { %>
+    <form action="/posts/<%= post._id %>/likes?_method=DELETE" method="POST">
+      <input type="submit" value="Unlike" />
+    </form>
+  <% } else { %>
+    <form action="/posts/<%= post._id %>/likes" method="POST">
+      <input type="submit" value="Like" />
+    </form> 
+  <%
+  };
+  if(user._id.equals(post.user._id)) { %>
     <a href="/posts/<%= post._id %>/edit">Edit</a>
     <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
       <input type="submit" value="Delete" />
     </form>
   <% }; %>
-<% } %>
+<% }; %>
