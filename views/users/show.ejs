@@ -3,7 +3,7 @@
   <% if(user._id.equals(profile._id)){ %>
     <a href="/user/settings">Settings</a>
   <% } else { %>
-    <% console.log(follow); if(follow){ %>
+    <% if(follow){ %>
       <form
         action="/users/<%= profile._id %>/follows?_method=DELETE"
         method="POST"

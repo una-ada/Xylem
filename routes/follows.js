@@ -20,7 +20,8 @@ const checkUser = (req, res, next) =>
 const router = new Router();
 router
   .route('/:id/follows')
-  .post(checkUser, followsCtrl.create);
+  .post(checkUser, followsCtrl.create)
+  .delete(checkUser, (req, res) => res.sendStatus(200));
 
 /*------ Exports -------------------------------------------------------------*/
 export default router;
