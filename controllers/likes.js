@@ -1,7 +1,7 @@
 /**
  * Likes controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.0
+ * @version 0.5.2
  * @since 0.5.0
  * @module controllers/likes
  * @see module:models/post

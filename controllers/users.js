@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.4
+ * @version 0.5.2
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
