@@ -1,7 +1,7 @@
 /**
  * Posts router for mounting on /posts
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.3
+ * @version 0.6.1
  * @since 0.3.1
  * @module routes/posts
  * @see module:models/post
@@ -18,7 +18,9 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router.post('/', checkUser, postsCtrl.create);
+router.route('/')
+  .get(checkUser, postsCtrl.index)
+  .post(checkUser, postsCtrl.create);
 router.get('/new', checkUser, postsCtrl.new);
 router.route('/:id')
   .get(postsCtrl.show)

@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.2
+ * @version 0.6.0
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
@@ -11,6 +11,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import User from '../models/user.js';
 import Post from '../models/post.js';
+import Follow from '../models/follow.js';
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
@@ -29,6 +30,19 @@ export default {
         : Post.find({ user: profile._id }, (err, posts) =>
             err
               ? console.error(err) || next(err)
+              : req.user
+              ? Follow.findOne(
+                  { from: req.user._id, to: profile._id },
+                  (err, follow) =>
+                    err
+                      ? console.error(err) || next(err)
+                      : res.render('users/show', {
+                          title: 'Posts',
+                          profile,
+                          posts,
+                          follow,
+                        })
+                )
               : res.render('users/show', { title: 'Posts', profile, posts })
           )
     ),

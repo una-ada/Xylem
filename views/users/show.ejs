@@ -1,4 +1,22 @@
 <h1><%= profile.displayName %> <small>(@<%= profile.handle %>)</small></h1>
+<% if(user){ %>
+  <% if(user._id.equals(profile._id)){ %>
+    <a href="/user/settings">Settings</a>
+  <% } else { %>
+    <% if(follow){ %>
+      <form
+        action="/users/<%= profile._id %>/follows?_method=DELETE"
+        method="POST"
+      >
+        <input type="submit" value="Unfollow" />
+      </form>
+    <% } else { %>
+      <form action="/users/<%= profile._id %>/follows" method="POST">
+        <input type="submit" value="Follow" />
+      </form>
+    <% } %>
+  <% } %>
+<% } %>
 <ul>
   <li><a href="/user/<%= profile.handle %>">Posts</a></li>
   <li><a href="/user/<%= profile.handle %>/likes">Likes</a></li>

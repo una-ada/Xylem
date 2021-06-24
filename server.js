@@ -19,6 +19,7 @@ import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
+import followsRouter from './routes/follows.js';
 import postsRouter from './routes/posts.js';
 import likesRouter from './routes/likes.js';
 import commentsRouter from './routes/comments.js';
@@ -65,6 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*----- Routers --------------------------------------------------------------*/
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/users', followsRouter);
 app.use('/posts', postsRouter);
 app.use('/posts', likesRouter);
 app.use('/posts', commentsRouter);
