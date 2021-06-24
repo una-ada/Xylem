@@ -34,4 +34,26 @@ export default {
               : res.redirect(`/posts/${post._id}`)
           )
     ),
+  /**
+   * Delete a comment.
+   * @arg {express.Request} req Express HTTP DELETE Request
+   * @arg {express.Response} res Express HTTP Response
+   * @arg {express.NextFunction} next Next function in the pipeline.
+   */
+  delete: (req, res, next) =>
+    Post.findById(req.params.id, (err, post) =>
+      err
+        ? console.error(err) || next(err)
+        : (comment =>
+            comment && req.user._id.equals(comment.user)
+              ? comment.remove() &&
+                post.save(err =>
+                  err
+                    ? console.error(err) || next(err)
+                    : res.redirect(`/posts/${post._id}`)
+                )
+              : res.redirect(`/posts/${post._id}`))(
+            post.comments.id(req.params.cId)
+          )
+    ),
 };

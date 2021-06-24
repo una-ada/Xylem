@@ -18,10 +18,8 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router
-  .route('/:id/comments')
-  .post(checkUser, commentsCtrl.create)
-  .delete(checkUser, (req, res) => res.send('TEST'));
+router.post('/:id/comments', checkUser, commentsCtrl.create);
+router.delete('/:id/comments/:cId', checkUser, commentsCtrl.delete);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
