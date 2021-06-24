@@ -16,6 +16,8 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
+router.route('/:id/likes')
+  .post(checkUser, (req, res) => res.send(req.params.id));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

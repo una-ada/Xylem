@@ -1,7 +1,7 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.4
+ * @version 0.5.0
  * @since 0.1.0
  * @module server
  */
@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/posts/:id/likes', likesRouter);
+app.use('/posts', likesRouter);
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {
