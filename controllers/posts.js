@@ -46,6 +46,7 @@ export default {
   show: (req, res, next) =>
     Post.findById(req.params.id)
       .populate('user')
+      .populate('comments.user')
       .exec((err, post) =>
         err
           ? // Mediocre error handling, throws some complicated shit for

@@ -1,7 +1,7 @@
 /**
  * Main server script.
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.4
+ * @version 0.5.0
  * @since 0.1.0
  * @module server
  */
@@ -20,6 +20,8 @@ import passport from 'passport';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import postsRouter from './routes/posts.js';
+import likesRouter from './routes/likes.js';
+import commentsRouter from './routes/comments.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 dotenv.config();
@@ -64,6 +66,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/posts', likesRouter);
+app.use('/posts', commentsRouter);
 
 /*----- Error Handling -------------------------------------------------------*/
 app.use(function (req, res, next) {

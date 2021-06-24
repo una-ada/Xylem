@@ -1,7 +1,7 @@
 /**
  * @file Xylem Gruntfile
  * @author Una Ada <una@anarchy.website>
- * @version 0.4.5
+ * @version 0.5.2
  * @since 0.4.0
  *
  * About Gruntfiles: {@link https://gruntjs.com/sample-gruntfile}
@@ -28,28 +28,6 @@ module.exports = grunt => {
         files: ['src/styles/*.scss'],
         tasks: ['dart-sass'],
       },
-      js: {
-        files: ['*.js', '**/*.js'],
-        tasks: ['jsdoc'],
-      },
-    },
-    // https://www.npmjs.com/package/grunt-jsdoc
-    jsdoc: {
-      dist: {
-        src: [
-          '*.js',
-          'bin/*.js',
-          'config/*.js',
-          'controllers/*.js',
-          'models/*.js',
-          'routes/*.js',
-        ],
-        dest: 'public/docs',
-        options: {
-          // https://github.com/clenemt/docdash
-          template: 'node_modules/docdash',
-        },
-      },
     },
     // https://www.npmjs.com/package/grunt-dart-sass
     'dart-sass': {
@@ -68,10 +46,9 @@ module.exports = grunt => {
   });
 
   /*------ Load Tasks --------------------------------------------------------*/
-  grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-dart-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   /*----- Register Tasks -----------------------------------------------------*/
-  grunt.registerTask('default', ['jsdoc', 'dart-sass', 'watch']);
+  grunt.registerTask('default', ['dart-sass', 'watch']);
 };
