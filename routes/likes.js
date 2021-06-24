@@ -18,8 +18,10 @@ const checkUser = (req, res, next) =>
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = new Router();
-router.route('/:id/likes')
-  .post(checkUser, likesCtrl.create);
+router
+  .route('/:id/likes')
+  .post(checkUser, likesCtrl.create)
+  .delete(checkUser, (req, res) => res.send('TEST'));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
