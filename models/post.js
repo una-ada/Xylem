@@ -1,7 +1,7 @@
 /**
  * Post model definition.
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.0
+ * @version 0.5.3
  * @since 0.3.0
  * @module models/post
  * @see module:controllers/post
@@ -16,6 +16,17 @@ const likeSchema = new mongoose.Schema(
     { user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } },
     { timestamps: true }
   ),
+  commentSchema = new mongoose.Schema(
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      content: String,
+      contentRich: String,
+    },
+    { timestamps: true }
+  ),
   postSchema = new mongoose.Schema(
     {
       user: {
@@ -26,6 +37,7 @@ const likeSchema = new mongoose.Schema(
       content: String,
       contentRich: String,
       likes: [likeSchema],
+      comments: [commentSchema],
     },
     { timestamps: true }
   );
