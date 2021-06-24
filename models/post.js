@@ -13,7 +13,12 @@ import mongoose from 'mongoose';
 
 /*------- Schema -------------------------------------------------------------*/
 const likeSchema = new mongoose.Schema(
-    { user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } },
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    },
     { timestamps: true }
   ),
   commentSchema = new mongoose.Schema(
