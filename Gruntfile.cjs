@@ -28,28 +28,6 @@ module.exports = grunt => {
         files: ['src/styles/*.scss'],
         tasks: ['dart-sass'],
       },
-      // js: {
-      //   files: ['*.js', '**/*.js'],
-      //   tasks: ['jsdoc'],
-      // },
-    },
-    // https://www.npmjs.com/package/grunt-jsdoc
-    jsdoc: {
-      dist: {
-        src: [
-          '*.js',
-          'bin/*.js',
-          'config/*.js',
-          'controllers/*.js',
-          'models/*.js',
-          'routes/*.js',
-        ],
-        dest: 'public/docs',
-        options: {
-          // https://github.com/clenemt/docdash
-          template: 'node_modules/docdash',
-        },
-      },
     },
     // https://www.npmjs.com/package/grunt-dart-sass
     'dart-sass': {
@@ -68,7 +46,6 @@ module.exports = grunt => {
   });
 
   /*------ Load Tasks --------------------------------------------------------*/
-  grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-dart-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
