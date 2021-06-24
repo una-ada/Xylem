@@ -21,7 +21,7 @@ const router = new Router();
 router
   .route('/:id/follows')
   .post(checkUser, followsCtrl.create)
-  .delete(checkUser, (req, res) => res.sendStatus(200));
+  .delete(checkUser, followsCtrl.delete);
 
 /*------ Exports -------------------------------------------------------------*/
 export default router;
