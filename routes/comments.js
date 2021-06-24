@@ -5,10 +5,12 @@
  * @since 0.5.3
  * @module routes/comments
  * @see module:models/post
+ * @see module:controllers/comments
  */
 
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
+import commentsCtrl from '../controllers/comments.js';
 
 /*----- Methods --------------------------------------------------------------*/
 const checkUser = (req, res, next) =>
