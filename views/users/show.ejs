@@ -1,4 +1,8 @@
 <h1><%= profile.displayName %> <small>(@<%= profile.handle %>)</small></h1>
+<ul>
+  <li><a href="/user/<%= profile.handle %>">Posts</a></li>
+  <li><a href="/user/<%= profile.handle %>/likes">Likes</a></li>
+</ul>
 <h2>Posts</h2>
 <% posts.forEach(post => { %>
   <h3><%= post.title %></h3>

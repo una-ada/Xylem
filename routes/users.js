@@ -1,7 +1,7 @@
 /**
  * Users router for mounting on /user
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.1
+ * @version 0.5.2
  * @since 0.2.0
  * @module router/users
  * @see module:models/user
@@ -23,6 +23,7 @@ router
   .get(checkUser, usersCtrl.edit)
   .put(checkUser, usersCtrl.put);
 router.get('/:handle', usersCtrl.show);
+router.get('/:handle/likes', (req, res) => res.send('TEST'));
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
