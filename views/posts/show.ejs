@@ -1,1 +1,6 @@
-<%- include('../partials/post', { post, showComments: true }); %>
+<head>
+  <link rel="stylesheet" href="/styles/style.css?v=<%= +new Date() %>" />
+</head>
+<body>
+  <%- include('../partials/post', { post, showComments: true }); %>
+</body>

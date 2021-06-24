@@ -1,8 +1,45 @@
-/* This is a test document */
+/*----- Variables ------------------------------------------------------------*/
+$shadow-1dp: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+  0 2px 1px -1px rgba(0, 0, 0, 0.12);
+$shadow-2dp: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12);
+$shadow-8dp: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+$shadow-16dp: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+  0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+$shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+  0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 
-html {
-  color: black;
+/*------ Blocks --------------------------------------------------------------*/
+
+.button {
+  z-index: 200;
+  box-shadow: $shadow-2dp;
 }
-body {
-  padding: 30px;
+.card {
+  z-index: 200;
+  box-shadow: $shadow-2dp;
+  width: 100%;
+  display: inline-block;
+  background: #fff;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+.card--lifted {
+  z-index: 800;
+  box-shadow: $shadow-8dp;
+}
+.menu {
+  z-index: 800;
+  box-shadow: $shadow-8dp;
+}
+.drawer {
+  z-index: 1600;
+  box-shadow: $shadow-16dp;
+}
+.dialog {
+  z-index: 2400;
+  box-shadow: $shadow-24dp;
+} 
+
+@import 'partials/posts';
