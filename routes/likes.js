@@ -1,7 +1,7 @@
 /**
  * Likes router for mounting on /posts/:id/likes
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.0
+ * @version 0.5.1
  * @since 0.5.0
  * @module routes/likes
  * @see module:models/post
@@ -21,7 +21,7 @@ const router = new Router();
 router
   .route('/:id/likes')
   .post(checkUser, likesCtrl.create)
-  .delete(checkUser, (req, res) => res.send('TEST'));
+  .delete(checkUser, likesCtrl.delete);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
