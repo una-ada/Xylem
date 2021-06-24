@@ -1,6 +1,3 @@
-<head>
-  <link rel="stylesheet" href="/styles/style.css?v=<%= +new Date() %>" />
-</head>
-<body>
+<%- include('../partials/head', { title: 'Post' }); %>
   <%- include('../partials/post', { post, showComments: true }); %>
-</body>
+<%- include('../partials/foot'); %>
