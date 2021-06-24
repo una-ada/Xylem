@@ -66,7 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*----- Routers --------------------------------------------------------------*/
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
-app.use('/user', followsRouter);
+app.use('/users', followsRouter);
 app.use('/posts', postsRouter);
 app.use('/posts', likesRouter);
 app.use('/posts', commentsRouter);
