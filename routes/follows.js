@@ -20,7 +20,7 @@ const checkUser = (req, res, next) =>
 const router = new Router();
 router
   .route('/:id/follows')
-  .post(checkUser, (req, res) => res.sendStatus(200));
+  .post(checkUser, followsCtrl.create);
 
 /*------ Exports -------------------------------------------------------------*/
 export default router;
