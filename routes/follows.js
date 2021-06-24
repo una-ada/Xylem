@@ -3,12 +3,14 @@
  * @author Una Ada <una@anarchy.website>
  * @version 0.6.0
  * @since 0.6.0
- * @module controllers/follows
+ * @module routes/follows
  * @see module:models/follow
+ * @see module:controllers/follows
  */
 
 /*------ Imports -------------------------------------------------------------*/
 import { Router } from 'express';
+import followsCtrl from '../controllers/follows.js';
 
 /*----- Methods --------------------------------------------------------------*/
 const checkUser = (req, res, next) =>

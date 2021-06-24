@@ -4,6 +4,8 @@
  * @version 0.6.0
  * @since 0.6.0
  * @module models/follow
+ * @see module:routes/follows
+ * @see module:controllers/follows
  */
 
 /*------ Imports -------------------------------------------------------------*/
