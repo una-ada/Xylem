@@ -60,21 +60,10 @@ export default {
         ? console.error(err) || next(err)
         : !profile
         ? res.redirect('/')
-        : /* Post.aggregate([
-            // Get all posts which have been liked by the user
-            { $match: { 'likes.user': profile._id } },
-            // Split posts such that each copy contains a single like
-            { $unwind: '$likes' },
-            // Get posts whose like is owned by the user
-            { $match: { 'likes.user': profile._id } },
-            // Sort the posts by the like id
-            { $sort: { 'likes._id': -1 } },
-          ]).exec((err, posts) =>
-          */
-          Post.find({'likes.user': profile._id }, (err, posts) =>
+        : Post.find({'likes.user': profile._id }, (err, posts) =>
             err
               ? console.error(err) || next(err)
-              : Post.populate(posts, { path: 'users' }, (err, posts) =>
+              : Post.populate(posts, { path: 'user' }, (err, posts) =>
                   err
                     ? console.error(err) || next(err)
                     : res.render('users/show', {
