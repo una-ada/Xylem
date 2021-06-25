@@ -12,12 +12,20 @@
       </a>
     </div>
     <div class="post__time">
-      New Post
+      <% if(post){ %>
+        Edit Post
+      <% } else { %>
+        New Post
+      <% } %>
     </div>
   </div>
   <div class="post__content">
     <form
-      action="/posts"
+      <% if(post){ %>
+        action="/posts/<%= post._id %>?_method=PUT"
+      <% } else { %>
+        action="/posts"
+      <% }; %>
       class="post__form"
       method="POST"
     >
@@ -25,11 +33,15 @@
         class="post__input"
         name="content"
         placeholder="Write about something..."
-      ></textarea>
+      ><%= post ? post.content : '' %></textarea>
       <input
         class="button post__submit"
         type="submit"
-        value="Post"
+        <% if(post){ %>
+          value="Save Post"
+        <% } else { %>
+          value="Publish"
+        <% }; %>
       />
     </form>
   </div>

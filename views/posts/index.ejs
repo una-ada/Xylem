@@ -1,5 +1,5 @@
 <%- include('../partials/head', { title: 'Dashboard' }); %>
-  <%- include('../partials/post-form'); %>
+  <%- include('../partials/post-form', { post: false }); %>
   <% posts.forEach(post => { %>
     <%- include('../partials/post', { post, showComments: false }); %>
   <% }); %>
