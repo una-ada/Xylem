@@ -250,10 +250,16 @@ html {
   padding: 0;
 }
 
+.comment__form {
+  margin-left: 41px;
+  text-align: right;
+}
+
 .comment__input {
-  background: rgba(0, 0, 0, 0);
+  background: none;
   border: 0;
-  float: left;
   outline: none;
-  width: 456px;
+  padding: 0;
+  position: relative;
+  width: 439px;
 }
