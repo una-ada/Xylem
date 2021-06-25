@@ -43,6 +43,20 @@ html {
   margin: 40px auto 0 auto;
   width: 500px;
 }
+.landing {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin-top: -40px;
+  a {
+    color: $primary-text !important;
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 0;
+  }
+}
 .nav {
   margin-bottom: 40px;
   text-align: center;

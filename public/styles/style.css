@@ -18,6 +18,21 @@ html {
   width: 500px;
 }
 
+.landing {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin-top: -40px;
+}
+.landing a {
+  color: #212121 !important;
+}
+.landing h1 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+
 .nav {
   margin-bottom: 40px;
   text-align: center;
