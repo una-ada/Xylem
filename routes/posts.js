@@ -21,7 +21,6 @@ const router = new Router();
 router.route('/')
   .get(checkUser, postsCtrl.index)
   .post(checkUser, postsCtrl.create);
-router.get('/new', checkUser, postsCtrl.new);
 router.route('/:id')
   .get(postsCtrl.show)
   .put(checkUser, postsCtrl.update)

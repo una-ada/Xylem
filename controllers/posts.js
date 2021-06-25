@@ -38,12 +38,6 @@ export default {
             )
     ),
   /**
-   * Render a form for creating new posts.
-   * @arg {express.Request} req Express HTTP GET Request.
-   * @arg {express.Response} res Express HTTP Response
-   */
-  new: (req, res) => res.render('posts/new'),
-  /**
    * Create a new post.
    * @arg {express.Request} req Express HTTP POST Request
    * @arg {express.Response} res Express HTTP Response
