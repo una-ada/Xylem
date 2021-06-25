@@ -46,11 +46,28 @@
 }
 .post__settings {
   cursor: pointer;
-  height: 12px;
-  overflow: hidden;
   position: absolute;
-  right: 0px;
-  width: 12px;
+  right: 0;
+  top: 0;
+  &:hover .post__settings-list {
+    display: block;
+  }
+}
+.post__settings-list {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+.post__settings-item {
+  text-align: right;
+  input {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
 }
 .post__input {
   background: #fff;
@@ -86,7 +103,7 @@
   color: black;
   cursor: pointer;
   display: inline;
-  font-size: 12pt;
+  font-size: 16px;
   outline: none;
   padding: 0;
 }

@@ -32,9 +32,16 @@ $shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
 a {
   text-decoration: none;
 }
+body {
+  margin: 0;
+}
 html {
   font-family: $font-family;
   font-size: $em;
+}
+.content {
+  margin: 40px auto 0 auto;
+  width: 500px;
 }
 
 /*----- Material -------------------------------------------------------------*/

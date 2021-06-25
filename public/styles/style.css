@@ -4,9 +4,18 @@ a {
   text-decoration: none;
 }
 
+body {
+  margin: 0;
+}
+
 html {
   font-family: "Noto Sans", sans-serif;
   font-size: 12px;
+}
+
+.content {
+  margin: 40px auto 0 auto;
+  width: 500px;
 }
 
 /*----- Material -------------------------------------------------------------*/
@@ -98,11 +107,30 @@ html {
 
 .post__settings {
   cursor: pointer;
-  height: 12px;
-  overflow: hidden;
   position: absolute;
-  right: 0px;
-  width: 12px;
+  right: 0;
+  top: 0;
+}
+.post__settings:hover .post__settings-list {
+  display: block;
+}
+
+.post__settings-list {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+.post__settings-item {
+  text-align: right;
+}
+.post__settings-item input {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
 }
 
 .post__input {
@@ -143,7 +171,7 @@ html {
   color: black;
   cursor: pointer;
   display: inline;
-  font-size: 12pt;
+  font-size: 16px;
   outline: none;
   padding: 0;
 }
@@ -169,8 +197,8 @@ html {
 }
 
 .comment__avatar {
-  background: #444;
   border-radius: 50%;
+  border: 1px solid #212121;
   cursor: pointer;
   float: left;
   height: 36px;
@@ -179,20 +207,17 @@ html {
 }
 
 .comment__name {
+  font-weight: bold;
   margin-left: 41px;
   position: relative;
   z-index: 5;
 }
 .comment__name a {
-  color: #555;
-}
-.comment__name a:hover {
-  color: #444;
+  color: #212121 !important;
 }
 
 .comment__handle {
-  color: #aaa;
-  font-size: 10pt;
+  font-weight: normal;
 }
 
 .comment__content {
@@ -205,10 +230,10 @@ html {
 }
 
 .comment__foot {
-  color: #aaa !important;
   font-size: 8pt;
   margin-left: 41px;
   max-width: 439px;
+  opacity: 0.5;
   position: relative;
 }
 .comment__foot form {

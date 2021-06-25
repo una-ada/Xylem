@@ -8,8 +8,8 @@
   z-index: 0;
 }
 .comment__avatar {
-  background: #444;
   border-radius: 50%;
+  border: 1px solid $primary-text;
   cursor: pointer;
   float: left;
   height: 36px;
@@ -17,19 +17,16 @@
   width: 36px;
 }
 .comment__name {
+  font-weight: bold;
   margin-left: 41px;
   position: relative;
   z-index: 5;
   a {
-    color: #555;
-  }
-  a:hover {
-    color: #444;
+    color: $primary-text !important;
   }
 }
 .comment__handle {
-  color: #aaa;
-  font-size: 10pt;
+  font-weight: normal;
 }
 .comment__content {
   margin-left: 41px;
@@ -40,10 +37,10 @@
   word-break: break-word;
 }
 .comment__foot {
-  color: #aaa !important;
   font-size: 8pt;
   margin-left: 41px;
   max-width: 439px;
+  opacity: 0.5;
   position: relative;
   form {
     display: inline;
