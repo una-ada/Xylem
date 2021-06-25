@@ -7,9 +7,30 @@ A simple micro-blogging site, developed to meet the requirements for
 
 ## Getting Started
 
-_Work in progress!_
+Open up the deployed app at [proj-xylem.herokuapp.com][29] and you'll be 
+greeted with a simple landing page, with a link to login with your Google 
+account via OAuth:
 
-<!-- TODO: Write out tutorial for deployed app. -->
+![Landing page](docs/images/login.png)
+
+Once logged in, you'll see your dashboard, which will show the posts of users 
+you follow, your own posts, and, most importantly, a form for publishing new 
+posts:
+
+![Dashboard](docs/images/dashboard.png)
+
+Opening a post by clicking on either its timestamp or the comment icon will 
+display the post with all of its comments and a form for adding a new comment:
+
+![Post display page](docs/images/post.png)
+
+To see a user's profile, just click on their name on a post or comment. For 
+your own profile, there is a link in the navigation menu at the top called 
+"Profile." Profiles can show either the posts created by a user or the posts 
+liked by that user, as well as a follow/unfollow button which is replaced by a 
+link to edit your settings on your own profile:
+
+![User profile](docs/images/profile.png)
 
 <!-- TODO: Add screenshots with annotations to explain the UI. -->
 
@@ -35,7 +56,8 @@ Server-side routing is managed by the [Express.js][25] web framework.
 
 Views are preprocessed with [Embedded JavaScript][23] (EJS) templates (written 
 in HTML with embedded tags for JS, similar to PHP) from the `/views` directory 
-or served statically using the [`express.static()`][24] middleware from the `/public` directory.
+or served statically using the [`express.static()`][24] middleware from the
+`/public` directory.
 
 ### Controller &rarr; [Node][26]
 
@@ -83,9 +105,12 @@ and posts, as well as basic user experience (UX) via a flow prototype.
 
 ## Next Steps
 
-_Work in progress!_
+Going forward, the client should run as a single page application (SPA) for 
+better user experience (UX).
 
-<!-- TODO: Write out planned updates. -->
+Further updated from there are planned as [Version 1.1][30] (adding image 
+uploads, user bios, and richtext) and [1.2][31] (adding notifications, tagging, 
+and messaging).
 
 <!-- TODO: Link to open issues for planned features. -->
 
@@ -117,3 +142,6 @@ _Work in progress!_
 [26]: https://nodejs.org/en/
 [27]: https://status.david-dm.org/gh/una-ada/Xylem.svg
 [28]: https://david-dm.org/una-ada/Xylem
+[29]: https://proj-xylem.herokuapp.com/
+[30]: https://github.com/una-ada/Xylem/milestone/2
+[31]: https://github.com/una-ada/Xylem/milestone/3
