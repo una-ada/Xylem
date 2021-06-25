@@ -1,5 +1,15 @@
 /*----- Variables ------------------------------------------------------------*/
-/*------ Blocks --------------------------------------------------------------*/
+/*----- Global ---------------------------------------------------------------*/
+a {
+  text-decoration: none;
+}
+
+html {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+}
+
+/*----- Material -------------------------------------------------------------*/
 .button {
   z-index: 200;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
@@ -11,11 +21,9 @@
   width: 100%;
   display: inline-block;
   background: #fff;
-  margin-bottom: 2rem;
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-.card--lifted {
+.card.card--lifted {
   z-index: 800;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
@@ -35,11 +43,12 @@
   box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
 
+/*----- Blocks ---------------------------------------------------------------*/
 .post {
   border: 0 !important;
   border-radius: 10px;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
   position: relative;
   text-align: left;
   transition: margin-bottom 0.3s;
@@ -51,9 +60,12 @@
   margin: 10px;
   position: relative;
 }
+.post__head a {
+  color: #212121 !important;
+}
 
 .post__avatar {
-  background: #444;
+  border: 1px solid #212121;
   border-radius: 50%;
   cursor: pointer;
   height: 36px;
@@ -64,26 +76,24 @@
 }
 
 .post__name {
+  font-size: 14px;
+  font-weight: bold;
   left: 46px;
   position: absolute;
   top: 0;
 }
 
 .post__handle {
-  color: #aaa;
-  font-size: 10pt;
+  font-weight: normal;
 }
 
 .post__time {
-  color: #aaa;
-  font-size: 8pt;
+  color: #81a99f;
+  font-size: 1rem;
   left: 46px;
+  opacity: 0.5;
   position: absolute;
-  top: 18px;
-}
-.post__time a {
-  color: #aaa;
-  font-size: 8pt;
+  top: 22px;
 }
 
 .post__settings {
@@ -139,7 +149,7 @@
 }
 
 .post__count {
-  vertical-align: 0.1em;
+  vertical-align: 0.3em;
 }
 
 .post__comments {

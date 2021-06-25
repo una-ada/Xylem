@@ -1,8 +1,8 @@
 .post {
   border: 0 !important;
-  border-radius: 10px;
+  border-radius: $rounding;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
   position: relative;
   text-align: left;
   transition: margin-bottom 0.3s;
@@ -12,9 +12,12 @@
   height: 36px;
   margin: 10px;
   position: relative;
+  a {
+    color: $primary-text !important;
+  }
 }
 .post__avatar {
-  background: #444;
+  border: 1px solid $primary-text;
   border-radius: 50%;
   cursor: pointer;
   height: 36px;
@@ -24,24 +27,22 @@
   width: 36px;
 }
 .post__name {
+  font-size: 14px;
+  font-weight: bold;
   left: 46px;
   position: absolute;
   top: 0;
 }
 .post__handle {
-  color: #aaa;
-  font-size: 10pt;
+  font-weight: normal;
 }
 .post__time {
-  color: #aaa;
-  font-size: 8pt;
+  color: $secondary-dark;
+  font-size: 1rem;
   left: 46px;
+  opacity: 0.5;
   position: absolute;
-  top: 18px;
-  a {
-    color: #aaa;
-    font-size: 8pt;
-  }
+  top: 22px;
 }
 .post__settings {
   cursor: pointer;
@@ -90,12 +91,12 @@
   padding: 0;
 }
 .post__count {
-  vertical-align: 0.1em;
+  vertical-align: 0.3em;
 }
 .post__comments {
   background: #fafafa;
-  border-radius: 0 0 10px 10px;
-  padding: 10px;
+  border-radius: 0 0 $rounding $rounding;
+  padding: $rounding;
 }
 .comment {
   clear: both;

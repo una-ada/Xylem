@@ -1,4 +1,22 @@
 /*----- Variables ------------------------------------------------------------*/
+$font-family: 'Noto Sans', sans-serif;
+
+// Sizes
+$em: 12px;
+$line-height: 1.8;
+$rounding: 10px;
+
+// Colors
+$primary: #ffb6c1;
+$primary-dark: #cb8691;
+$primary-light: #ffe9f4;
+$primary-text: #212121;
+$secondary: #b1dbd0;
+$secondary-dark: #81a99f;
+$secondary-light: #e3ffff;
+$secondary-text: #263238;
+
+// Shadows
 $shadow-1dp: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
   0 2px 1px -1px rgba(0, 0, 0, 0.12);
 $shadow-2dp: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -10,8 +28,16 @@ $shadow-16dp: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
 $shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
   0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
 
-/*------ Blocks --------------------------------------------------------------*/
+/*----- Global ---------------------------------------------------------------*/
+a {
+  text-decoration: none;
+}
+html {
+  font-family: $font-family;
+  font-size: $em;
+}
 
+/*----- Material -------------------------------------------------------------*/
 .button {
   z-index: 200;
   box-shadow: $shadow-2dp;
@@ -22,12 +48,11 @@ $shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
   width: 100%;
   display: inline-block;
   background: #fff;
-  margin-bottom: 2rem;
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.card--lifted {
-  z-index: 800;
-  box-shadow: $shadow-8dp;
+  &.card--lifted {
+    z-index: 800;
+    box-shadow: $shadow-8dp;
+  }
 }
 .menu {
   z-index: 800;
@@ -40,6 +65,7 @@ $shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
 .dialog {
   z-index: 2400;
   box-shadow: $shadow-24dp;
-} 
+}
 
+/*----- Blocks ---------------------------------------------------------------*/
 @import 'partials/posts';

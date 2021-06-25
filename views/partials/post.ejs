@@ -5,13 +5,13 @@
       <a href="/user/<%= post.user.handle %>">
         <%= post.user.displayName %>
         <span class="post__handle">
-          @<%= post.user.handle %>
+          (@<%= post.user.handle %>)
         </span>
       </a>
     </div>
     <div class="post__time">
       <a href="/posts/<%= post._id %>">
-        <%= post.createdAt %>
+        <%= post.createdAt.toLocaleString() %>
       </a>
     </div>
     <% if(user && user._id.equals(post.user._id)) { %>
@@ -88,7 +88,7 @@
             <%= comment.content %>
           </div>
           <div class="comment__foot">
-            <%= comment.createdAt %> &bull;
+            <%= comment.createdAt.toLocaleString() %> &bull;
             <% if(user._id.equals(comment.user._id)) { %>
               <form
                 action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
