@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.6.0
+ * @version 0.7.1
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
@@ -27,24 +27,26 @@ export default {
         ? console.error(err) || next(err)
         : !profile
         ? res.redirect('/')
-        : Post.find({ user: profile._id }, (err, posts) =>
-            err
-              ? console.error(err) || next(err)
-              : req.user
-              ? Follow.findOne(
-                  { from: req.user._id, to: profile._id },
-                  (err, follow) =>
-                    err
-                      ? console.error(err) || next(err)
-                      : res.render('users/show', {
-                          title: 'Posts',
-                          profile,
-                          posts,
-                          follow,
-                        })
-                )
-              : res.render('users/show', { title: 'Posts', profile, posts })
-          )
+        : Post.find({ user: profile._id })
+            .populate('user')
+            .exec((err, posts) =>
+              err
+                ? console.error(err) || next(err)
+                : req.user
+                ? Follow.findOne(
+                    { from: req.user._id, to: profile._id },
+                    (err, follow) =>
+                      err
+                        ? console.error(err) || next(err)
+                        : res.render('users/show', {
+                            title: 'Posts',
+                            profile,
+                            posts,
+                            follow,
+                          })
+                  )
+                : res.render('users/show', { title: 'Posts', profile, posts })
+            )
     ),
   /**
    * Renders a list of likes for the user specified by :handle
@@ -58,7 +60,7 @@ export default {
         ? console.error(err) || next(err)
         : !profile
         ? res.redirect('/')
-        : Post.aggregate([
+        : /* Post.aggregate([
             // Get all posts which have been liked by the user
             { $match: { 'likes.user': profile._id } },
             // Split posts such that each copy contains a single like
@@ -68,9 +70,19 @@ export default {
             // Sort the posts by the like id
             { $sort: { 'likes._id': -1 } },
           ]).exec((err, posts) =>
+          */
+          Post.find({'likes.user': profile._id }, (err, posts) =>
             err
               ? console.error(err) || next(err)
-              : res.render('users/show', { title: 'Likes', profile, posts })
+              : Post.populate(posts, { path: 'users' }, (err, posts) =>
+                  err
+                    ? console.error(err) || next(err)
+                    : res.render('users/show', {
+                        title: 'Likes',
+                        profile,
+                        posts,
+                      })
+                )
           )
     ),
   /**
