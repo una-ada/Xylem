@@ -38,6 +38,7 @@ html {
   text-align: center;
 }
 .nav a {
+  color: #212121 !important;
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
