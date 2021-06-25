@@ -1,7 +1,7 @@
 /**
  * Posts controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.7.2
+ * @version 0.7.4
  * @since 0.3.1
  * @module controllers/posts
  * @see module:models/post
@@ -30,6 +30,7 @@ export default {
               { user: req.user._id },
             ],
           })
+            .sort('-_id')
             .populate('user')
             .exec((err, posts) =>
               err

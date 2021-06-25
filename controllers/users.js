@@ -1,7 +1,7 @@
 /**
  * Users controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.7.1
+ * @version 0.7.4
  * @since 0.2.0
  * @module controllers/users
  * @see module:model/user
@@ -29,6 +29,7 @@ export default {
         ? res.redirect('/')
         : Post.find({ user: profile._id })
             .populate('user')
+            .sort('-_id')
             .exec((err, posts) =>
               err
                 ? console.error(err) || next(err)
@@ -60,19 +61,21 @@ export default {
         ? console.error(err) || next(err)
         : !profile
         ? res.redirect('/')
-        : Post.find({'likes.user': profile._id }, (err, posts) =>
-            err
-              ? console.error(err) || next(err)
-              : Post.populate(posts, { path: 'user' }, (err, posts) =>
-                  err
-                    ? console.error(err) || next(err)
-                    : res.render('users/show', {
-                        title: 'Likes',
-                        profile,
-                        posts,
-                      })
-                )
-          )
+        : Post.find({ 'likes.user': profile._id })
+            .sort('-_id')
+            .exec((err, posts) =>
+              err
+                ? console.error(err) || next(err)
+                : Post.populate(posts, { path: 'user' }, (err, posts) =>
+                    err
+                      ? console.error(err) || next(err)
+                      : res.render('users/show', {
+                          title: 'Likes',
+                          profile,
+                          posts,
+                        })
+                  )
+            )
     ),
   /**
    * Renders a settings page for the current user.
