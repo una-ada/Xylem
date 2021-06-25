@@ -1,6 +1,8 @@
 <%- include('../partials/head', { title: profile.displayName }); %>
   <%- include('../partials/nav'); %>
   <h1><%= profile.displayName %> <small>(@<%= profile.handle %>)</small></h1>
+  <a href="/user/<%= profile.handle %>">Posts</a> &bull;
+  <a href="/user/<%= profile.handle %>/likes">Likes</a> &bull;
   <% if(user){ %>
     <% if(user._id.equals(profile._id)){ %>
       <a href="/user/settings">Settings</a>
@@ -8,21 +10,18 @@
       <% if(follow){ %>
         <form
           action="/users/<%= profile._id %>/follows?_method=DELETE"
+          class="user__form"
           method="POST"
         >
-          <input type="submit" value="Unfollow" />
+          <input class="user__button" type="submit" value="Unfollow" />
         </form>
       <% } else { %>
         <form action="/users/<%= profile._id %>/follows" method="POST">
-          <input type="submit" value="Follow" />
+          <input class="user__button" type="submit" value="Follow" />
         </form>
       <% } %>
     <% } %>
   <% } %>
-  <ul>
-    <li><a href="/user/<%= profile.handle %>">Posts</a></li>
-    <li><a href="/user/<%= profile.handle %>/likes">Likes</a></li>
-  </ul>
   <h2><%= title %></h2>
   <% posts.forEach(post => { %>
     <%- include('../partials/post', { post, showComments: false }); %>

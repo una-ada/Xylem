@@ -36,8 +36,12 @@ body {
   margin: 0;
 }
 html {
+  color: $primary-text;
   font-family: $font-family;
   font-size: $em;
+}
+label {
+  display: block;
 }
 .content {
   margin: 40px auto 0 auto;
@@ -70,8 +74,13 @@ html {
 
 /*----- Material -------------------------------------------------------------*/
 .button {
-  z-index: 200;
+  background: $primary;
+  border: 0;
+  border-radius: 5px;
   box-shadow: $shadow-2dp;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 200;
 }
 .card {
   z-index: 200;

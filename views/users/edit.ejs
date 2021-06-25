@@ -1,4 +1,6 @@
-<% if(user) { %>
+<%- include('../partials/head', { title: 'Settings' }); %>
+  <%- include('../partials/nav'); %>
+  <h1>Settings</h1>
   <form action="/user/settings?_method=PUT" method="POST">
     <label>
       Username:
@@ -19,8 +21,9 @@
     </label>
     <br />
     <input
+      class="button"
       type="submit"
       value="Save Settings"
     />
   </form>
-<% } %>
+<%- include('../partials/foot'); %>

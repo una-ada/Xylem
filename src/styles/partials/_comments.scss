@@ -42,11 +42,13 @@
   max-width: 439px;
   opacity: 0.5;
   position: relative;
-  form {
-    display: inline;
-  }
 }
-.comment__button {
+.comment__foot form,
+.user__form {
+  display: inline;
+}
+.comment__button,
+.user__button {
   background: none;
   border: none;
   cursor: pointer;
