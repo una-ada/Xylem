@@ -97,7 +97,6 @@ html {
 }
 
 .post__time {
-  color: #81a99f;
   font-size: 1rem;
   left: 46px;
   opacity: 0.5;
@@ -133,6 +132,10 @@ html {
   padding: 0;
 }
 
+.post__form {
+  text-align: right;
+}
+
 .post__input {
   background: #fff;
   border: 0;
@@ -143,6 +146,15 @@ html {
   outline: 0;
   overflow: hidden;
   width: 480px;
+}
+
+.post__submit {
+  background: #ffb6c1;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 .post__content {
