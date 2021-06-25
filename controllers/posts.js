@@ -1,7 +1,7 @@
 /**
  * Posts controller.
  * @author Una Ada <una@anarchy.website>
- * @version 0.3.3
+ * @version 0.7.4
  * @since 0.3.1
  * @module controllers/posts
  * @see module:models/post
@@ -24,25 +24,20 @@ export default {
     Follow.find({ from: req.user._id }, (err, follows) =>
       err
         ? console.error(err) || next(err)
-        : Post.find(
-            {
-              $or: [
-                { user: { $in: follows.map(follow => follow.to) } },
-                { user: req.user._id },
-              ],
-            },
-            (err, posts) =>
+        : Post.find({
+            $or: [
+              { user: { $in: follows.map(follow => follow.to) } },
+              { user: req.user._id },
+            ],
+          })
+            .sort('-_id')
+            .populate('user')
+            .exec((err, posts) =>
               err
                 ? console.error(err) || next(err)
                 : res.render('posts/index', { posts })
-          )
+            )
     ),
-  /**
-   * Render a form for creating new posts.
-   * @arg {express.Request} req Express HTTP GET Request.
-   * @arg {express.Response} res Express HTTP Response
-   */
-  new: (req, res) => res.render('posts/new'),
   /**
    * Create a new post.
    * @arg {express.Request} req Express HTTP POST Request

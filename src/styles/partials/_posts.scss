@@ -1,0 +1,122 @@
+.post {
+  border: 0 !important;
+  border-radius: $rounding;
+  display: inline-block;
+  margin-bottom: 4rem;
+  position: relative;
+  text-align: left;
+  transition: margin-bottom 0.3s;
+  width: 500px;
+}
+.post__head {
+  height: 36px;
+  margin: 10px;
+  position: relative;
+  a {
+    color: $primary-text !important;
+  }
+}
+.post__avatar {
+  border: 1px solid $primary-text;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 36px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 36px;
+}
+.post__name {
+  font-size: 14px;
+  font-weight: bold;
+  left: 46px;
+  position: absolute;
+  top: 0;
+}
+.post__handle {
+  font-weight: normal;
+}
+.post__time {
+  font-size: 1rem;
+  left: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 22px;
+}
+.post__settings {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &:hover .post__settings-list {
+    display: block;
+  }
+}
+.post__settings-list {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+.post__settings-item {
+  text-align: right;
+  input {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+  }
+}
+.post__form {
+  text-align: right;
+}
+.post__input {
+  background: #fff;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  min-height: 150px;
+  resize: none;
+  outline: 0;
+  overflow: hidden;
+  width: 480px;
+}
+.post__submit {
+  margin-bottom: 10px;
+}
+.post__content {
+  clear: both;
+  margin: 0 10px;
+  text-align: justify;
+  word-break: break-word;
+  width: 480px;
+}
+.post__interact {
+  margin: 10px;
+}
+.post__action {
+  display: inline-block;
+  width: 10%;
+  form {
+    display: inline;
+  }
+}
+.post__button {
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: inline;
+  font-size: 16px;
+  outline: none;
+  padding: 0;
+}
+.post__count {
+  vertical-align: 0.3em;
+}
+.post__comments {
+  background: #fafafa;
+  border-radius: 0 0 $rounding $rounding;
+  padding: $rounding;
+}

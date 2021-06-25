@@ -1,7 +1,7 @@
 /**
  * Post model definition.
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.3
+ * @version 0.7.3
  * @since 0.3.0
  * @module models/post
  * @see module:controllers/post
@@ -38,7 +38,6 @@ const likeSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
       },
-      title: String,
       content: String,
       contentRich: String,
       likes: [likeSchema],

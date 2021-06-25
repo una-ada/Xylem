@@ -1,0 +1,48 @@
+<div class="card post" id="post--new">
+  <div class="post__head">
+    <a href="/user/<%= user.handle %>">
+      <img class="post__avatar" />
+    </a>
+    <div class="post__name">
+      <a href="/user/<%= user.handle %>">
+        <%= user.displayName %>
+        <span class="post__handle">
+          (@<%= user.handle %>)
+        </span>
+      </a>
+    </div>
+    <div class="post__time">
+      <% if(post){ %>
+        Edit Post
+      <% } else { %>
+        New Post
+      <% } %>
+    </div>
+  </div>
+  <div class="post__content">
+    <form
+      <% if(post){ %>
+        action="/posts/<%= post._id %>?_method=PUT"
+      <% } else { %>
+        action="/posts"
+      <% }; %>
+      class="post__form"
+      method="POST"
+    >
+      <textarea
+        class="post__input"
+        name="content"
+        placeholder="Write about something..."
+      ><%= post ? post.content : '' %></textarea>
+      <input
+        class="button post__submit"
+        type="submit"
+        <% if(post){ %>
+          value="Save Post"
+        <% } else { %>
+          value="Publish"
+        <% }; %>
+      />
+    </form>
+  </div>
+</div>

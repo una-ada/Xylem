@@ -1,4 +1,7 @@
-<% posts.forEach(post => { %>
-  <a href="/posts/<%= post._id %>"><h3><%= post.title %></h3></a>
-  <p><%= post.content %></p>
-<% }); %>
+<%- include('../partials/head', { title: 'Dashboard' }); %>
+  <%- include('../partials/nav'); %>
+  <%- include('../partials/post-form', { post: false }); %>
+  <% posts.forEach(post => { %>
+    <%- include('../partials/post', { post, showComments: false }); %>
+  <% }); %>
+<%- include('../partials/foot'); %>

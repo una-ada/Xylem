@@ -1,0 +1,132 @@
+<div class="card post" id="post--<%= post._id %>">
+  <div class="post__head">
+    <a href="/user/<%= post.user.handle %>">
+      <img class="post__avatar" />
+    </a>
+    <div class="post__name">
+      <a href="/user/<%= post.user.handle %>">
+        <%= post.user.displayName %>
+        <span class="post__handle">
+          (@<%= post.user.handle %>)
+        </span>
+      </a>
+    </div>
+    <div class="post__time">
+      <a href="/posts/<%= post._id %>">
+        <%= post.createdAt.toLocaleString() %>
+      </a>
+    </div>
+    <% if(user && user._id.equals(post.user._id)) { %>
+      <div class="post__settings">
+        <span class="post__button material-icons">settings</span>
+        <div class="post__settings-list">
+          <div class="post__settings-item">
+            <a href="/posts/<%= post._id %>/edit">Edit</a>
+          </div>
+          <div class="post__settings-item">
+            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete" />
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }; %> 
+  </div>
+  <div class="post__content">
+    <%= post.content %>
+  </div>
+  <% if(user){ %> 
+    <div class="post__interact">
+      <div class="post__action">
+        <% if(!showComments){ %>
+          <a href="/posts/<%= post._id %>">
+        <% } %>
+        <span class="post__button material-icons">mode_comment</span>
+        <% if(!showComments){ %>
+          </a>
+        <% } %>
+        <span class="post__count"><%= post.comments.length %></span>
+      </div>
+      <div class="post__action">
+        <% if(post.likes.filter(like => user._id.equals(like.user)).length) { %>
+          <form
+            action="/posts/<%= post._id %>/likes?_method=DELETE"
+            method="POST"
+          >
+            <input
+              class="post__button material-icons"
+              type="submit"
+              value="favorite"
+            />
+          </form>
+        <% } else { %>
+          <form
+            action="/posts/<%= post._id %>/likes"
+            method="POST"
+          >
+            <input
+              class="post__button material-icons"
+              type="submit"
+              value="favorite_border"
+            />
+          </form> 
+        <% }; %>
+        <span class="post__count"><%= post.likes.length %></span>
+      </div>
+    </div>
+  <% }; %>
+  <% if(showComments){ %> 
+    <div class="post__comments">
+      <% post.comments.forEach(comment => { %>
+        <div class="comment">
+          <a href="/users/<%= comment.user.handle %>">
+            <img class="comment__avatar" />
+          </a>
+          <div class="comment__name">
+            <a href="/user/<%= comment.user.handle %>">
+              <%= comment.user.displayName %>
+              <span class="comment__handle">
+                @<%= comment.user.handle %>
+              </span>
+            </a>
+          </div>
+          <div class="comment__content">
+            <%= comment.content %>
+          </div>
+          <div class="comment__foot">
+            <%= comment.createdAt.toLocaleString() %> &bull;
+            <% if(user._id.equals(comment.user._id)) { %>
+              <form
+                action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
+                method="POST">
+                <input class="comment__button" type="submit" value="Delete" />
+              </form>
+            <% } %> 
+          </div>
+        </div>
+      <% }); if(user) { %>
+        <div class="comment">
+          <img class="comment__avatar" />
+          <div class="comment__name">
+            <%= user.displayName %>
+            <span class="comment__handle">
+              @<%= user.handle %>
+            </span>
+          </div>
+          <form
+            action="/posts/<%= post._id %>/comments"
+            class="comment__form"
+            method="POST">
+            <input
+              class="comment__input"
+              name="content"
+              placeholder="Write a comment..."
+              type="text"
+            />
+            <input type="submit" value="Comment" />
+          </form>
+        </div>
+      <% } %>
+    </div>
+  <% }; %>
+</div>

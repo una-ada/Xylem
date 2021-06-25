@@ -1,7 +1,7 @@
 /**
  * @file Xylem Gruntfile
  * @author Una Ada <una@anarchy.website>
- * @version 0.5.2
+ * @version 0.7.0
  * @since 0.4.0
  *
  * About Gruntfiles: {@link https://gruntjs.com/sample-gruntfile}
@@ -25,7 +25,7 @@ module.exports = grunt => {
     // https://github.com/gruntjs/grunt-contrib-watch
     watch: {
       css: {
-        files: ['src/styles/*.scss'],
+        files: ['src/styles/**/*.scss'],
         tasks: ['dart-sass'],
       },
     },

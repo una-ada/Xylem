@@ -1,7 +1,7 @@
 /**
  * Index router.
  * @author Una Ada <una@anarchy.website>
- * @version 0.1.6
+ * @version 0.7.4
  * @since 0.1.6
  * @module routes/index
  */
@@ -12,7 +12,9 @@ import passport from 'passport';
 
 /*----- Routes ---------------------------------------------------------------*/
 const router = Router();
-router.get('/', (req, res) => res.render('index'));
+router.get('/', (req, res) =>
+  req.user ? res.redirect('/posts') : res.render('index')
+);
 router.get(
   '/oauth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
