@@ -1,4 +1,4 @@
-<%- include('../partials/head', { title: 'Post' }); %>
+<%- include('../partials/head', { title: profile.displayName }); %>
   <h1><%= profile.displayName %> <small>(@<%= profile.handle %>)</small></h1>
   <% if(user){ %>
     <% if(user._id.equals(profile._id)){ %>
